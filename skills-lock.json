@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "skills": {
+    "doudou-image-jasperio": {
+      "source": "..\\doudou-hack-skill\\",
+      "sourceUrl": "..\\doudou-hack-skill\\",
+      "sourceType": "git",
+      "skillPath": "skills/jasperio.xyz/SKILL.md",
+      "computedHash": "5cde09f123de5866e07e74d13e4900674cc8715d05268b8f1ac0d74d114f2242"
+    },
+    "doudou-image-zaiduyu": {
+      "source": "..\\doudou-hack-skill\\",
+      "sourceUrl": "..\\doudou-hack-skill\\",
+      "sourceType": "git",
+      "skillPath": "skills/zaiduyu.top/SKILL.md",
+      "computedHash": "5b8962e13aa6f9c2050059c362d89e24f34c1abbcc11cb44f2867d6cd40c04da"
+    }
+  }
+}
