@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>青莲映日 · 孔雀销金</title>
+<meta name="description" content="基于 526 种中国传统色构建的高级国风撞色视觉海报色谱">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* ══════════════════════════════════════════════════════════════
+   青莲映日 · 孔雀销金 —— 国风撞色视觉海报色谱
+   全部色值出自 doudou-color skill / colors.json 526 种权威国色
+   ══════════════════════════════════════════════════════════════ */
+:root {
+  /* ── 60% 底衬：玄赤沉夜 ── */
+  --mozi:       #310f1b;  /* 墨紫   [49,15,27]     水火相激的极深玄赤 */
+  --tanzi:      #381924;  /* 檀紫   [56,25,36]     承接面／卡片微提亮 */
+
+  /* ── 30% 主体：紫绛尊贵 ── */
+  --qinglian:   #8b2671;  /* 青莲   [139,38,113]   牡丹魏紫一脉的贵紫 */
+  --weizi:      #7e1671;  /* 魏紫   [126,22,113]   主体深压层 */
+
+  /* ── 撞色对冲：水克火 ── */
+  --kongque:    #0eb0c9;  /* 孔雀蓝 [14,176,201]   丝路琉璃，冷锋对撞 */
+  --tonglv:     #2bae85;  /* 铜绿   [43,174,133]   青铜锈色，木气缓冲 */
+
+  /* ── 10% 点睛：销金烈焰 ── */
+  --tenghuang:  #ffd111;  /* 藤黄   [254,209,16]   矿物金，画龙点睛 */
+
+  /* ── 文字与描边 ── */
+  --xuebai:     #fffef9;  /* 雪白   [255,254,249]  正文，墨紫底 17.12:1 */
+  --xinghui:    #b2bbbe;  /* 星灰   [178,187,190]  次级说明，8.85:1 */
+  --qianniuzi:  #681752;  /* 牵牛紫 [104,23,82]    描边，1.51:1 低对比 */
+
+  /* ── 语义令牌 ── */
+  --bg:         var(--mozi);
+  --surface:    var(--tanzi);
+  --primary:    var(--qinglian);
+  --primary-dk: var(--weizi);
+  --clash:      var(--kongque);
+  --clash-alt:  var(--tonglv);
+  --accent:     var(--tenghuang);
+  --text:       var(--xuebai);
+  --text-muted: var(--xinghui);
+  --border:     var(--qianniuzi);
+
+  --radius: 16px;
+  --radius-sm: 9px;
+  --glow-sky:  0 0 34px -8px rgba(14,176,201,.55);
+  --glow-gold: 0 0 30px -6px rgba(255,209,17,.5);
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Noto Sans SC", -apple-system, "PingFang SC", sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* 撞色张力：紫绛与孔雀蓝在暗场中对冲的光雾 */
+body::before {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 62% 44% at 84% 10%, rgba(14,176,201,.20), transparent 60%),
+    radial-gradient(ellipse 68% 48% at 10% 26%, rgba(139,38,113,.34), transparent 62%),
+    radial-gradient(ellipse 54% 36% at 52% 98%, rgba(255,209,17,.11), transparent 62%);
+}
+
+.wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+section { padding: 108px 0; }
+
+.sec-head { margin-bottom: 56px; }
+
+.sec-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--clash); margin-bottom: 18px;
+}
+.sec-kicker::before {
+  content: ""; width: 30px; height: 1px;
+  background: linear-gradient(90deg, var(--clash), transparent);
+}
+
+h2 {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 500; font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  letter-spacing: .06em; line-height: 1.4;
+}
+.sec-desc { margin-top: 16px; max-width: 62ch; color: var(--text-muted); font-size: .95rem; }
+
+/* ══════════ HERO ══════════ */
+.hero { padding: 128px 0 96px; position: relative; }
+
+.hero-seal {
+  position: absolute; top: 118px; right: 32px;
+  width: 76px; height: 76px; border-radius: 12px;
+  background: var(--accent);
+  display: grid; place-items: center;
+  font-family: "Noto Serif SC", serif; font-size: 1.42rem; font-weight: 700;
+  color: var(--mozi);              /* 墨紫 on 藤黄 = 11.84:1 AAA */
+  line-height: 1.1; text-align: center;
+  box-shadow: var(--glow-gold);
+  transform: rotate(3deg);
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 7px 18px 7px 14px;
+  border: 1px solid var(--border); border-radius: 100px;
+  background: rgba(56,25,36,.7);
+  backdrop-filter: blur(8px);
+  font-family: "JetBrains Mono", monospace;
+  font-size: .7rem; letter-spacing: .16em; color: var(--text-muted);
+  margin-bottom: 34px;
+}
+.hero-tag i {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--clash); box-shadow: 0 0 0 4px rgba(14,176,201,.22);
+}
+
+h1 {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 300;
+  font-size: clamp(2.7rem, 7.4vw, 5.1rem);
+  line-height: 1.22; letter-spacing: .09em;
+  margin-bottom: 30px;
+}
+h1 em {
+  font-style: normal; font-weight: 900;
+  background: linear-gradient(102deg, var(--qinglian) 0%, var(--kongque) 54%, var(--tenghuang) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1 .sep { color: var(--border); font-weight: 200; padding: 0 .12em; }
+
+.hero-poem {
+  font-family: "Noto Serif SC", serif;
+  font-size: 1.06rem; font-weight: 300; line-height: 2.1;
+  color: var(--text-muted); max-width: 58ch;
+  padding-left: 22px; border-left: 2px solid var(--primary);
+  margin-bottom: 40px;
+}
+.hero-poem cite {
+  display: block; margin-top: 10px;
+  font-size: .82rem; font-style: normal; letter-spacing: .1em;
+  color: var(--clash);
+}
+
+.hero-strip { display: flex; height: 8px; border-radius: 100px; overflow: hidden; max-width: 480px; }
+.hero-strip span { flex: 1; transition: flex .5s var(--ease); }
+.hero-strip:hover span:hover { flex: 2.4; }
+
+/* ══════════ 色谱矩阵 ══════════ */
+.ratio-bar {
+  display: flex; height: 62px; border-radius: var(--radius-sm);
+  overflow: hidden; margin-bottom: 40px;
+  border: 1px solid var(--border);
+}
+.ratio-bar div {
+  display: grid; place-items: center;
+  font-family: "JetBrains Mono", monospace; font-size: .74rem; letter-spacing: .1em;
+}
+
+.swatch-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+}
+
+.swatch {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.swatch:hover { transform: translateY(-6px); box-shadow: var(--glow-sky); }
+
+.swatch-chip {
+  height: 132px; position: relative;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 16px;
+}
+.swatch-role {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 100px;
+  background: rgba(49,15,27,.82); color: var(--xuebai);
+}
+.swatch-wuxing {
+  font-family: "Noto Serif SC", serif; font-size: 1.5rem; font-weight: 500;
+  opacity: .55; line-height: 1;
+}
+
+.swatch-body { padding: 20px; }
+.swatch-name {
+  font-family: "Noto Serif SC", serif; font-size: 1.28rem; font-weight: 500;
+  letter-spacing: .1em; display: flex; align-items: baseline; gap: 10px;
+}
+.swatch-name small {
+  font-family: "JetBrains Mono", monospace; font-size: .64rem;
+  letter-spacing: .1em; color: var(--text-muted); font-weight: 400;
+}
+.swatch-note { font-size: .82rem; color: var(--text-muted); margin: 8px 0 16px; line-height: 1.7; }
+
+.swatch-data { border-top: 1px dashed var(--border); padding-top: 13px; display: grid; gap: 6px; }
+.swatch-data div {
+  display: flex; justify-content: space-between; gap: 12px;
+  font-family: "JetBrains Mono", monospace; font-size: .68rem;
+}
+.swatch-data dt { color: var(--text-muted); letter-spacing: .1em; }
+.swatch-data dd { color: var(--text); font-weight: 500; }
+.swatch-data .hex dd { font-weight: 700; color: var(--accent); }
+
+/* ══════════ 五行对冲 ══════════ */
+.wuxing {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 52px 40px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px; align-items: center; text-align: center;
+}
+.wx-node { display: grid; gap: 12px; justify-items: center; }
+.wx-orb {
+  width: 74px; height: 74px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: "Noto Serif SC", serif; font-size: 1.68rem; font-weight: 500;
+  position: relative;
+}
+.wx-orb::after {
+  content: ""; position: absolute; inset: -9px;
+  border: 1px dashed var(--border); border-radius: 50%;
+}
+.wx-label { font-family: "Noto Serif SC", serif; font-size: 1.02rem; letter-spacing: .1em; }
+.wx-sub {
+  font-family: "JetBrains Mono", monospace; font-size: .64rem;
+  letter-spacing: .12em; color: var(--text-muted);
+}
+.wx-arrow { font-size: 1.2rem; color: var(--clash); display: grid; gap: 3px; justify-items: center; }
+.wx-arrow small {
+  font-family: "JetBrains Mono", monospace; font-size: .58rem;
+  letter-spacing: .12em; color: var(--text-muted);
+}
+
+/* ══════════ 海报应用（纯 CSS） ══════════ */
+.poster-grid {
+  display: grid; gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.poster {
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.poster:hover { transform: translateY(-7px); box-shadow: var(--glow-sky); }
+
+.poster-view { height: 340px; position: relative; overflow: hidden; padding: 30px; }
+.poster-cap {
+  background: var(--surface); padding: 18px 22px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+}
+.poster-cap b { font-family: "Noto Serif SC", serif; font-weight: 500; letter-spacing: .08em; font-size: .96rem; }
+.poster-cap span {
+  font-family: "JetBrains Mono", monospace; font-size: .62rem;
+  letter-spacing: .1em; color: var(--text-muted); text-align: right; flex-shrink: 0;
+}
+
+/* ① 主视觉海报：青莲底，孔雀蓝斜切 */
+.ps-main { background: linear-gradient(152deg, var(--qinglian) 0%, var(--weizi) 100%); }
+.ps-main::before {
+  content: ""; position: absolute; top: -40%; right: -28%;
+  width: 78%; height: 180%;
+  background: var(--kongque); opacity: .9;
+  transform: rotate(24deg);
+}
+.ps-main .t {
+  position: relative; z-index: 2;
+  font-family: "Noto Serif SC", serif; font-size: 2.5rem; font-weight: 900;
+  line-height: 1.24; letter-spacing: .12em;
+  color: var(--xuebai);            /* 雪白 on 青莲 = 7.96:1 AAA */
+  text-shadow: 0 3px 18px rgba(49,15,27,.55);
+}
+.ps-main .rule { position: relative; z-index: 2; width: 56px; height: 4px; background: var(--accent); margin: 18px 0 14px; }
+.ps-main .s {
+  position: relative; z-index: 2;
+  font-family: "JetBrains Mono", monospace; font-size: .62rem;
+  letter-spacing: .2em; color: rgba(255,254,249,.9);
+}
+.ps-main .no {
+  position: absolute; z-index: 2; right: 26px; bottom: 24px;
+  font-family: "Noto Serif SC", serif; font-size: 3.6rem; font-weight: 900;
+  color: var(--mozi); opacity: .72; line-height: 1;
+}
+
+/* ② 展览主视觉：暗场金线 */
+.ps-expo { background: var(--mozi); display: grid; place-content: center; justify-items: center; gap: 16px; }
+.ps-expo .ring {
+  width: 158px; height: 158px; border-radius: 50%;
+  border: 2px solid var(--accent);
+  display: grid; place-items: center; align-content: center; gap: 5px;
+  box-shadow: var(--glow-gold), inset 0 0 30px -10px rgba(255,209,17,.35);
+}
+.ps-expo .ring b {
+  font-family: "Noto Serif SC", serif; font-size: 2rem; font-weight: 700;
+  letter-spacing: .14em; color: var(--accent);   /* 藤黄 on 墨紫 = 11.84:1 AAA */
+}
+.ps-expo .ring small {
+  font-family: "JetBrains Mono", monospace; font-size: .54rem;
+  letter-spacing: .22em; color: var(--text-muted);
+}
+.ps-expo .meta {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+}
+.ps-expo .meta i {
+  font-style: normal; padding: 5px 13px; border-radius: 100px;
+  font-size: .64rem; letter-spacing: .1em;
+  border: 1px solid var(--border); color: var(--text-muted);
+}
+
+/* ③ 唱片／封套：铜绿撞青莲 */
+.ps-disc { background: var(--tonglv); display: grid; place-items: center; }
+.ps-disc .sleeve {
+  width: 210px; height: 210px; position: relative;
+  background: var(--qinglian);
+  display: grid; place-items: center;
+  box-shadow: 0 26px 50px -22px rgba(49,15,27,.7);
+}
+.ps-disc .sleeve::before {
+  content: ""; position: absolute; inset: 12px;
+  border: 1px solid rgba(255,254,249,.35);
+}
+.ps-disc .disc {
+  width: 118px; height: 118px; border-radius: 50%;
+  background: radial-gradient(circle, var(--mozi) 26%, var(--weizi) 27% 62%, var(--mozi) 63%);
+  display: grid; place-items: center;
+}
+.ps-disc .disc i {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent); font-style: normal;
+}
+.ps-disc .cn {
+  position: absolute; left: 22px; bottom: 18px;
+  font-family: "Noto Serif SC", serif; font-size: .96rem; font-weight: 700;
+  letter-spacing: .2em; color: var(--xuebai);
+}
+
+/* ④ 色标印章组 */
+.ps-chop { background: var(--tanzi); display: grid; grid-template-columns: repeat(2, auto);
+  place-content: center; justify-items: center; gap: 20px 24px; }
+.chop {
+  width: 94px; height: 94px; border-radius: 8px;
+  display: grid; place-items: center; align-content: center;
+  font-family: "Noto Serif SC", serif; line-height: 1.2; text-align: center;
+}
+.chop b { font-size: 1.4rem; font-weight: 700; letter-spacing: .06em; }
+.chop small { font-family: "JetBrains Mono", monospace; font-size: .5rem; letter-spacing: .14em; opacity: .82; }
+.cp1 { background: var(--accent);   color: var(--mozi); }    /* 11.84:1 */
+.cp2 { background: var(--kongque);  color: var(--mozi); }    /* 6.65:1 */
+.cp3 { background: var(--tonglv);   color: var(--mozi); }    /* 6.17:1 */
+.cp4 { background: var(--qinglian); color: var(--xuebai); }  /* 7.96:1 */
+
+/* ══════════ UI 组件 ══════════ */
+.ui-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+.card h3 {
+  font-family: "Noto Serif SC", serif; font-size: 1.1rem; font-weight: 500;
+  letter-spacing: .09em; margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.card h3::before {
+  content: ""; width: 3px; height: 15px; border-radius: 2px; background: var(--accent);
+}
+
+.row { display: flex; flex-wrap: wrap; gap: 11px; align-items: center; margin-bottom: 15px; }
+.row:last-child { margin-bottom: 0; }
+
+.btn {
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: .86rem; font-weight: 500; letter-spacing: .06em;
+  padding: 11px 24px; border-radius: 100px; border: 1px solid transparent;
+  cursor: pointer; transition: all .3s var(--ease);
+}
+/* 藤黄底配墨紫字 11.84:1，撞色方案里最强的转化按钮 */
+.btn-accent { background: var(--accent); color: var(--mozi); font-weight: 700; }
+.btn-accent:hover { transform: translateY(-2px); box-shadow: var(--glow-gold); }
+/* 孔雀蓝底同样配深字 6.65:1，切勿配白字（仅 2.57:1） */
+.btn-clash { background: var(--clash); color: var(--mozi); font-weight: 500; }
+.btn-clash:hover { transform: translateY(-2px); box-shadow: var(--glow-sky); }
+/* 青莲底配雪白字 7.96:1 */
+.btn-primary { background: var(--primary); color: var(--xuebai); }
+.btn-primary:hover { background: var(--primary-dk); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); }
+.btn-ghost:hover { background: rgba(255,209,17,.12); }
+
+.badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .64rem; letter-spacing: .12em;
+  padding: 5px 12px; border-radius: 100px;
+}
+.bg-gold  { background: var(--accent);   color: var(--mozi); }
+.bg-sky   { background: var(--clash);    color: var(--mozi); }
+.bg-jade  { background: var(--tonglv);   color: var(--mozi); }
+.bg-lotus { background: var(--qinglian); color: var(--xuebai); }
+.bg-line  { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+
+.field {
+  width: 100%; font-family: inherit; font-size: .88rem;
+  padding: 12px 16px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: rgba(49,15,27,.6);
+  color: var(--text); transition: all .3s var(--ease);
+}
+.field::placeholder { color: var(--text-muted); opacity: .65; }
+.field:focus {
+  outline: none; border-color: var(--clash);
+  box-shadow: 0 0 0 4px rgba(14,176,201,.22);
+}
+
+.tabs { display: flex; gap: 4px; padding: 5px; background: rgba(49,15,27,.66); border-radius: 100px; }
+.tab {
+  flex: 1; text-align: center; font-size: .82rem; font-weight: 500;
+  padding: 9px 4px; border-radius: 100px; cursor: pointer;
+  color: var(--text-muted); transition: all .3s var(--ease);
+}
+.tab.on { background: var(--accent); color: var(--mozi); font-weight: 700; }
+.tab:not(.on):hover { color: var(--accent); }
+
+.meter { height: 7px; border-radius: 100px; background: rgba(49,15,27,.75); overflow: hidden; }
+.meter i { display: block; height: 100%; border-radius: 100px; }
+.m1 { width: 82%; background: linear-gradient(90deg, var(--qinglian), var(--kongque)); }
+.m2 { width: 56%; background: linear-gradient(90deg, var(--kongque), var(--tonglv)); }
+.m3 { width: 24%; background: var(--accent); }
+.meter-label {
+  display: flex; justify-content: space-between;
+  font-family: "JetBrains Mono", monospace; font-size: .62rem;
+  color: var(--text-muted); margin-bottom: 7px; letter-spacing: .1em;
+}
+
+/* ══════════ 数据表 ══════════ */
+.table-wrap {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow-x: auto;
+}
+table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 660px; }
+thead th {
+  background: rgba(49,15,27,.72);
+  font-family: "JetBrains Mono", monospace; font-weight: 500;
+  font-size: .64rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-muted); text-align: left;
+  padding: 15px 18px; white-space: nowrap;
+}
+tbody td { padding: 15px 18px; border-top: 1px solid var(--border); vertical-align: middle; }
+tbody tr:hover { background: rgba(139,38,113,.16); }
+td.mono, th.mono { font-family: "JetBrains Mono", monospace; font-size: .74rem; }
+.cell-name { display: flex; align-items: center; gap: 11px; white-space: nowrap; }
+.cell-dot { width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(255,254,249,.16); flex-shrink: 0; }
+.cell-name b { font-family: "Noto Serif SC", serif; font-weight: 500; letter-spacing: .06em; }
+
+/* 状态色取自库内：藤黄 11.84:1 / 谷黄 8.76:1 / 颊红 8.94:1（墨紫底） */
+.pass { color: #ffd111; font-weight: 700; }  /* 藤黄 */
+.warn { color: #e8b004; font-weight: 700; }  /* 谷黄 */
+.fail { color: #eeaa9c; font-weight: 700; }  /* 颊红 */
+
+/* ══════════ 工艺指南 ══════════ */
+.craft-grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); }
+.craft {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 30px;
+  border-top: 3px solid var(--accent);
+}
+.craft:nth-child(2) { border-top-color: var(--clash); }
+.craft:nth-child(3) { border-top-color: var(--primary); }
+.craft:nth-child(4) { border-top-color: var(--clash-alt); }
+.craft h4 {
+  font-family: "Noto Serif SC", serif; font-size: 1.04rem; font-weight: 500;
+  letter-spacing: .08em; margin-bottom: 8px;
+}
+.craft .cn {
+  font-family: "JetBrains Mono", monospace; font-size: .6rem;
+  letter-spacing: .16em; color: var(--clash); margin-bottom: 16px;
+}
+.craft ul { list-style: none; display: grid; gap: 11px; }
+.craft li {
+  font-size: .84rem; color: var(--text-muted); line-height: 1.7;
+  padding-left: 16px; position: relative;
+}
+.craft li::before {
+  content: ""; position: absolute; left: 0; top: .62em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--primary);
+}
+.craft li b { color: var(--text); font-weight: 500; }
+
+/* ══════════ 代码块 ══════════ */
+.code {
+  background: rgba(49,15,27,.86); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 32px; overflow-x: auto;
+  font-family: "JetBrains Mono", monospace; font-size: .76rem; line-height: 2.05;
+}
+.code pre { color: var(--xinghui); }
+.code .k { color: #0eb0c9; }   /* 孔雀蓝 6.65:1 */
+.code .v { color: #ffd111; }   /* 藤黄   11.84:1 */
+.code .c { color: #806d9e; font-style: italic; }  /* 槿紫 3.79:1，注释 */
+.code .s { color: #2bae85; }   /* 铜绿   6.17:1 */
+
+/* ══════════ 页脚 ══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 52px 0 64px; margin-top: 40px; text-align: center;
+}
+footer .fp {
+  font-family: "Noto Serif SC", serif; font-size: 1.16rem; font-weight: 300;
+  letter-spacing: .2em; color: var(--accent); margin-bottom: 14px;
+}
+footer .fm {
+  font-family: "JetBrains Mono", monospace; font-size: .64rem;
+  letter-spacing: .14em; color: var(--text-muted); line-height: 2;
+}
+
+/* ══════════ 响应式 ══════════ */
+@media (max-width: 720px) {
+  .wrap { padding: 0 20px; }
+  section { padding: 74px 0; }
+  .hero { padding: 84px 0 68px; }
+  .hero-seal { width: 58px; height: 58px; font-size: 1.06rem; top: 78px; right: 20px; }
+  .wuxing { padding: 36px 22px; }
+  .wx-arrow { transform: rotate(90deg); }
+  .card, .craft { padding: 24px; }
+  .ps-chop { gap: 16px 18px; }
+  .ps-main .t { font-size: 1.95rem; }
+  .ps-main .no { font-size: 2.7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-seal">销金</div>
+
+    <div class="hero-tag"><i></i>唯美炫丽 · 强烈撞色 · 视觉海报色谱</div>
+
+    <h1><em>青莲映日</em><span class="sep">·</span><em>孔雀销金</em></h1>
+
+    <p class="hero-poem">
+      撞色的高级感不在"艳"，而在"压得住"。以墨紫铺满六成暗场，让青莲的紫绛与孔雀蓝的冷锋在深底上正面对冲，
+      形成水火相激的张力；藤黄只作一成销金点睛，如夜色中一线金箔。全谱十色皆出自 526 种权威国色。
+      <cite>「接天莲叶无穷碧，映日荷花别样红」—— 杨万里《晓出净慈寺送林子方》</cite>
+    </p>
+
+    <div class="hero-strip">
+      <span style="background:#310f1b"></span>
+      <span style="background:#381924"></span>
+      <span style="background:#7e1671"></span>
+      <span style="background:#8b2671"></span>
+      <span style="background:#0eb0c9"></span>
+      <span style="background:#2bae85"></span>
+      <span style="background:#ffd111"></span>
+      <span style="background:#b2bbbe"></span>
+      <span style="background:#fffef9"></span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════ 色谱矩阵 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Palette Matrix / 色谱矩阵</div>
+      <h2>暗场撞色的六三一</h2>
+      <p class="sec-desc">
+        撞色最怕两个高饱和色平分版面 —— 那是打架，不是撞色。正确做法是让深色底占据绝对面积，
+        对冲双方各据一侧，点睛色严格压到一成以内。张力来自面积的悬殊，而非色相的堆叠。
+      </p>
+    </div>
+
+    <div class="ratio-bar">
+      <div style="flex:6;background:#310f1b;color:#fffef9">60% 墨紫暗场</div>
+      <div style="flex:3;background:#8b2671;color:#fffef9">30% 青莲主体</div>
+      <div style="flex:1;background:#ffd111;color:#310f1b">10%</div>
+    </div>
+
+    <div class="swatch-grid">
+
+      <!-- 墨紫 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#310f1b">
+          <span class="swatch-role">Base 60%</span>
+          <span class="swatch-wuxing" style="color:#8b2671">水</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">墨紫 <small>mozi</small></div>
+          <p class="swatch-note">水火相激的极深玄赤，全谱的暗场基底。撞色能"压得住"全靠它的绝对面积。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#310f1b</dd></div>
+            <div><dt>RGB</dt><dd>49, 15, 27</dd></div>
+            <div><dt>CMYK</dt><dd>53, 92, 55, 81</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 檀紫 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#381924">
+          <span class="swatch-role">Surface</span>
+          <span class="swatch-wuxing" style="color:#8b2671">水</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">檀紫 <small>tanzi</small></div>
+          <p class="swatch-note">墨紫的微提亮层，紫檀木色。用于卡片与承接面，暗场中拉开层次而不破沉稳。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#381924</dd></div>
+            <div><dt>RGB</dt><dd>56, 25, 36</dd></div>
+            <div><dt>CMYK</dt><dd>48, 90, 50, 76</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 青莲 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#8b2671">
+          <span class="swatch-role">Primary 30%</span>
+          <span class="swatch-wuxing" style="color:#ffd111">火</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">青莲 <small>qinglian</small></div>
+          <p class="swatch-note">牡丹魏紫一脉的贵紫，撞色的主攻方。承载雪白字达 7.96:1，可做实心主体。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#8b2671</dd></div>
+            <div><dt>RGB</dt><dd>139, 38, 113</dd></div>
+            <div><dt>CMYK</dt><dd>43, 97, 19, 8</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 魏紫 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#7e1671">
+          <span class="swatch-role">Primary Deep</span>
+          <span class="swatch-wuxing" style="color:#ffd111">火</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">魏紫 <small>weizi</small></div>
+          <p class="swatch-note">洛阳牡丹名品之色，青莲的深压层。用于 hover 与渐变端点，紫气更纯。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#7e1671</dd></div>
+            <div><dt>RGB</dt><dd>126, 22, 113</dd></div>
+            <div><dt>CMYK</dt><dd>52, 100, 17, 7</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 孔雀蓝 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#0eb0c9">
+          <span class="swatch-role">Clash</span>
+          <span class="swatch-wuxing" style="color:#310f1b">水</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-note" style="margin:0 0 8px"></div>
+          <div class="swatch-name">孔雀蓝 <small>kongquelan</small></div>
+          <p class="swatch-note">丝路琉璃与景泰蓝之色，撞色的冷锋。与青莲正面对冲，是全谱张力的来源。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#0eb0c9</dd></div>
+            <div><dt>RGB</dt><dd>14, 176, 201</dd></div>
+            <div><dt>CMYK</dt><dd>92, 0, 28, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 铜绿 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#2bae85">
+          <span class="swatch-role">Clash Alt</span>
+          <span class="swatch-wuxing" style="color:#310f1b">木</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">铜绿 <small>tonglv</small></div>
+          <p class="swatch-note">青铜器锈色，木气缓冲带。夹在紫与蓝的对冲之间，避免两色直接硬碰。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#2bae85</dd></div>
+            <div><dt>RGB</dt><dd>43, 174, 133</dd></div>
+            <div><dt>CMYK</dt><dd>92, 0, 64, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 藤黄 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#ffd111">
+          <span class="swatch-role">Accent 10%</span>
+          <span class="swatch-wuxing" style="color:#310f1b">土</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">藤黄 <small>tenghuang</small></div>
+          <p class="swatch-note">矿物金颜料，全谱最亮点。墨紫底上达 11.84:1，是暗场里唯一的销金一线。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#ffd111</dd></div>
+            <div><dt>RGB</dt><dd>254, 209, 16</dd></div>
+            <div><dt>CMYK</dt><dd>0, 21, 94, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 雪白 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#fffef9">
+          <span class="swatch-role">Text</span>
+          <span class="swatch-wuxing" style="color:#310f1b">土</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">雪白 <small>xuebai</small></div>
+          <p class="swatch-note">带一丝暖意的纯白，正文文字色。墨紫底上 17.12:1，远超 AAA 门槛。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#fffef9</dd></div>
+            <div><dt>RGB</dt><dd>255, 254, 249</dd></div>
+            <div><dt>CMYK</dt><dd>0, 1, 3, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 星灰 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#b2bbbe">
+          <span class="swatch-role">Text Muted</span>
+          <span class="swatch-wuxing" style="color:#310f1b">金</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">星灰 <small>xinghui</small></div>
+          <p class="swatch-note">星子微光的冷灰，次级说明文字。8.85:1 达 AAA，长段落不刺眼。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#b2bbbe</dd></div>
+            <div><dt>RGB</dt><dd>178, 187, 190</dd></div>
+            <div><dt>CMYK</dt><dd>36, 20, 23, 2</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 牵牛紫 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#681752">
+          <span class="swatch-role">Border</span>
+          <span class="swatch-wuxing" style="color:#ffd111">火</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">牵牛紫 <small>qianniuzi</small></div>
+          <p class="swatch-note">牵牛花的暗紫，描边专用。墨紫底上仅 1.51:1，恰好只勾轮廓而不抢注意力。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#681752</dd></div>
+            <div><dt>RGB</dt><dd>104, 23, 82</dd></div>
+            <div><dt>CMYK</dt><dd>49, 100, 29, 32</dd></div>
+          </dl>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 五行对冲 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Wu Xing / 五行对冲</div>
+      <h2>水克火 · 木为缓冲</h2>
+      <p class="sec-desc">
+        撞色在五行上走的是"克"而非"生"：孔雀蓝属水，青莲属火，水克火即为对冲，气场相激才有冲击力。
+        但纯粹相克易伤，故在两者之间置入铜绿属木作缓冲，末端以藤黄属土收气，形成完整的张力闭环。
+      </p>
+    </div>
+
+    <div class="wuxing">
+      <div class="wx-node">
+        <div class="wx-orb" style="background:#0eb0c9;color:#310f1b">水</div>
+        <div class="wx-label">孔雀蓝</div>
+        <div class="wx-sub">#0EB0C9</div>
+      </div>
+
+      <div class="wx-arrow">⚔<small>克</small></div>
+
+      <div class="wx-node">
+        <div class="wx-orb" style="background:#8b2671;color:#fffef9">火</div>
+        <div class="wx-label">青莲</div>
+        <div class="wx-sub">#8B2671</div>
+      </div>
+
+      <div class="wx-arrow">→<small>缓冲</small></div>
+
+      <div class="wx-node">
+        <div class="wx-orb" style="background:#2bae85;color:#310f1b">木</div>
+        <div class="wx-label">铜绿</div>
+        <div class="wx-sub">#2BAE85</div>
+      </div>
+
+      <div class="wx-arrow">→<small>收气</small></div>
+
+      <div class="wx-node">
+        <div class="wx-orb" style="background:#ffd111;color:#310f1b">土</div>
+        <div class="wx-label">藤黄</div>
+        <div class="wx-sub">#FFD111</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 海报应用 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Poster / 视觉应用</div>
+      <h2>四类视觉载体演示</h2>
+      <p class="sec-desc">全部由纯 CSS 绘制，未使用图片。可直接查看源码取用撞色的面积比例与切割角度。</p>
+    </div>
+
+    <div class="poster-grid">
+
+      <!-- 主视觉海报 -->
+      <div class="poster">
+        <div class="poster-view ps-main">
+          <div class="t">国色<br>无边</div>
+          <div class="rule"></div>
+          <div class="s">TRADITIONAL CHINESE COLORS</div>
+          <div class="no">壹</div>
+        </div>
+        <div class="poster-cap">
+          <b>主视觉海报</b>
+          <span>青莲满版 + 孔雀蓝斜切<br>藤黄断线</span>
+        </div>
+      </div>
+
+      <!-- 展览主视觉 -->
+      <div class="poster">
+        <div class="poster-view ps-expo">
+          <div class="ring">
+            <b>销金</b>
+            <small>XIAOJIN EXHIBITION</small>
+          </div>
+          <div class="meta"><i>矿物颜料</i><i>景泰蓝</i><i>缂丝</i></div>
+        </div>
+        <div class="poster-cap">
+          <b>展览主视觉</b>
+          <span>墨紫暗场 + 藤黄金线<br>局部 UV 提亮</span>
+        </div>
+      </div>
+
+      <!-- 唱片封套 -->
+      <div class="poster">
+        <div class="poster-view ps-disc">
+          <div class="sleeve">
+            <div class="disc"><i></i></div>
+            <div class="cn">魏紫吟</div>
+          </div>
+        </div>
+        <div class="poster-cap">
+          <b>唱片封套</b>
+          <span>铜绿衬底 + 青莲套盒<br>藤黄轴心</span>
+        </div>
+      </div>
+
+      <!-- 色标印章 -->
+      <div class="poster">
+        <div class="poster-view ps-chop">
+          <div class="chop cp1"><b>金</b><small>11.84:1</small></div>
+          <div class="chop cp2"><b>孔</b><small>6.65:1</small></div>
+          <div class="chop cp3"><b>铜</b><small>6.17:1</small></div>
+          <div class="chop cp4"><b>莲</b><small>7.96:1</small></div>
+        </div>
+        <div class="poster-cap">
+          <b>色标印章组</b>
+          <span>四色均已通过 WCAG AA<br>烫印工艺</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ UI 组件 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">UI Components / 界面组件</div>
+      <h2>配套暗色界面元件</h2>
+      <p class="sec-desc">
+        撞色方案落到界面上有个反直觉的结论：高饱和的孔雀蓝与藤黄都必须配深字，配白字反而不合规。
+      </p>
+    </div>
+
+    <div class="ui-grid">
+
+      <div class="card">
+        <h3>按钮层级</h3>
+        <div class="row">
+          <button class="btn btn-accent">立即购票</button>
+          <button class="btn btn-clash">加入收藏</button>
+        </div>
+        <div class="row">
+          <button class="btn btn-primary">展览详情</button>
+          <button class="btn btn-ghost">下载图录</button>
+        </div>
+        <p style="font-size:.78rem;color:var(--text-muted);margin-top:16px;line-height:1.7">
+          藤黄与孔雀蓝底一律配墨紫字（11.84:1 / 6.65:1）。孔雀蓝配白字仅 2.57:1，不达标。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>标签徽章</h3>
+        <div class="row">
+          <span class="badge bg-gold">特展</span>
+          <span class="badge bg-sky">限时</span>
+          <span class="badge bg-jade">免预约</span>
+        </div>
+        <div class="row">
+          <span class="badge bg-lotus">主宾馆</span>
+          <span class="badge bg-line">全馆通票</span>
+        </div>
+        <p style="font-size:.78rem;color:var(--text-muted);margin-top:16px;line-height:1.7">
+          高饱和底配墨紫字，低饱和描边款配星灰字，两条路线不混用。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>表单与切换</h3>
+        <div class="row" style="display:block">
+          <input class="field" type="text" placeholder="请输入观展人姓名" aria-label="观展人姓名">
+        </div>
+        <div class="row" style="display:block;margin-top:14px">
+          <div class="tabs" role="tablist">
+            <div class="tab on" role="tab" aria-selected="true">全部</div>
+            <div class="tab" role="tab" aria-selected="false">器物</div>
+            <div class="tab" role="tab" aria-selected="false">织绣</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>数据进度</h3>
+        <div style="margin-bottom:20px">
+          <div class="meter-label"><span>预约达成</span><span>82%</span></div>
+          <div class="meter"><i class="m1"></i></div>
+        </div>
+        <div style="margin-bottom:20px">
+          <div class="meter-label"><span>展期进度</span><span>56%</span></div>
+          <div class="meter"><i class="m2"></i></div>
+        </div>
+        <div>
+          <div class="meter-label"><span>余票</span><span>24%</span></div>
+          <div class="meter"><i class="m3"></i></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 对比度 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">WCAG 2.1 / 无障碍实测</div>
+      <h2>对比度实测与用法边界</h2>
+      <p class="sec-desc">
+        下表数值按 WCAG 2.1 相对亮度公式实算。暗底撞色方案的陷阱与浅色方案正好相反 ——
+        高饱和色本身亮度不低，配白字往往不达标，必须回头配深底色。
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>前景色</th><th>背景色</th><th class="mono">对比度</th><th class="mono">等级</th><th>适用范围</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9"></span><b>雪白</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td class="mono">17.12:1</td><td class="mono pass">AAA</td><td>正文、标题，任意字号</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9"></span><b>雪白</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#381924"></span><b>檀紫</b></div></td>
+            <td class="mono">15.61:1</td><td class="mono pass">AAA</td><td>卡片内正文</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#ffd111"></span><b>藤黄</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td class="mono">11.84:1</td><td class="mono pass">AAA</td><td>点睛标题、金线、强调数字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#ffd111"></span><b>藤黄</b></div></td>
+            <td class="mono">11.84:1</td><td class="mono pass">AAA</td><td>主转化按钮、印章</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9"></span><b>雪白</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#7e1671"></span><b>魏紫</b></div></td>
+            <td class="mono">9.28:1</td><td class="mono pass">AAA</td><td>深紫块上的文字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#b2bbbe"></span><b>星灰</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td class="mono">8.85:1</td><td class="mono pass">AAA</td><td>次级说明、时间戳</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9"></span><b>雪白</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#8b2671"></span><b>青莲</b></div></td>
+            <td class="mono">7.96:1</td><td class="mono pass">AAA</td><td>主体色块上的标题</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#b2bbbe"></span><b>星灰</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#381924"></span><b>檀紫</b></div></td>
+            <td class="mono">8.06:1</td><td class="mono pass">AAA</td><td>卡片内次级文字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#0eb0c9"></span><b>孔雀蓝</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td class="mono">6.65:1</td><td class="mono pass">AA</td><td>小标题、链接、图标</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#0eb0c9"></span><b>孔雀蓝</b></div></td>
+            <td class="mono">6.65:1</td><td class="mono pass">AA</td><td>撞色按钮的唯一合规配字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#2bae85"></span><b>铜绿</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td class="mono">6.17:1</td><td class="mono pass">AA</td><td>辅助文字、缓冲色块</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9"></span><b>雪白</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#0eb0c9"></span><b>孔雀蓝</b></div></td>
+            <td class="mono">2.58:1</td><td class="mono fail">不达标</td><td>禁用组合，改配墨紫字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#8b2671"></span><b>青莲</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td class="mono">2.15:1</td><td class="mono fail">不达标</td><td>禁用于文字，仅作色块</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#681752"></span><b>牵牛紫</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#310f1b"></span><b>墨紫</b></div></td>
+            <td class="mono">1.51:1</td><td class="mono warn">描边专用</td><td>仅作分割线与卡片描边</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 工艺指南 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Production / 印制工艺</div>
+      <h2>纸张与后道工艺建议</h2>
+      <p class="sec-desc">
+        高饱和撞色对印刷的考验在于"色域" —— 青莲与孔雀蓝都处在 CMYK 色域边缘，四色胶印很难还原屏幕效果。
+      </p>
+    </div>
+
+    <div class="craft-grid">
+
+      <div class="craft">
+        <h4>纸张选型</h4>
+        <div class="cn">PAPER STOCK</div>
+        <ul>
+          <li><b>首选黑卡／深色卡纸</b>：墨紫大面积印刷成本高且易露白，直接用深色纸打底更稳。</li>
+          <li><b>高白铜版</b>：若需保留孔雀蓝的通透，反而要用高白铜版纸满版印刷。</li>
+          <li><b>金银卡纸</b>：藤黄区域可利用金卡纸本身的金属光泽，省去烫金工序。</li>
+          <li><b>避开牛皮纸</b>：纸张本身的黄褐底会吃掉青莲的紫气。</li>
+        </ul>
+      </div>
+
+      <div class="craft">
+        <h4>四色印刷把控</h4>
+        <div class="cn">CMYK CONTROL</div>
+        <ul>
+          <li><b>青莲 C43 M97 Y19 K8</b>：品红版接近满版，四色印刷会偏暗偏灰，强烈建议改专色。</li>
+          <li><b>孔雀蓝 C92 M0 Y28 K0</b>：青版满载，属 CMYK 色域边缘色，屏幕上的鲜亮度无法完全复现。</li>
+          <li><b>墨紫 K81</b>：总墨量高达 281%，需与印厂确认总墨量上限，防止背印与糊版。</li>
+          <li><b>专色优先</b>：青莲与孔雀蓝建议各开一个专色版，这是撞色方案能否成立的关键。</li>
+        </ul>
+      </div>
+
+      <div class="craft">
+        <h4>后道工艺</h4>
+        <div class="cn">FINISHING</div>
+        <ul>
+          <li><b>哑膜加局部 UV</b>：整体哑膜压住暗场，孔雀蓝与藤黄区域局部 UV，反差即是高级感来源。</li>
+          <li><b>烫金</b>：藤黄改烫真金或哑金，比四色印刷的黄更有"销金"质感。</li>
+          <li><b>击凸</b>：主标题可素击凸，暗场中靠光影读出层次。</li>
+          <li><b>避免过油</b>：暗紫大面积过油易产生不均匀的光斑。</li>
+        </ul>
+      </div>
+
+      <div class="craft">
+        <h4>数字端注意</h4>
+        <div class="cn">DIGITAL NOTES</div>
+        <ul>
+          <li><b>禁用组合已标注</b>：孔雀蓝配白字、墨紫底青莲字均不可用于正文。</li>
+          <li><b>浅色模式需换轴</b>：本方案为暗色专用，转浅色应以雪白为底、墨紫为文字。</li>
+          <li><b>焦点态可见</b>：输入框聚焦使用 4px 孔雀蓝光圈，暗场中依然清晰。</li>
+          <li><b>动效克制</b>：已内置 prefers-reduced-motion 降级。</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 设计令牌 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Design Tokens / 工程令牌</div>
+      <h2>可直接取用的 CSS 变量</h2>
+      <p class="sec-desc">复制即可用于项目，命名沿用传统色拼音，语义层另做映射，便于后期换肤。</p>
+    </div>
+
+    <div class="code">
+<pre><span class="c">/* 青莲映日 · 孔雀销金 —— 国风撞色海报色谱 */</span>
+<span class="k">:root</span> {
+  <span class="c">/* 60% 暗场 */</span>
+  <span class="k">--mozi</span>:       <span class="v">#310f1b</span>;  <span class="c">/* 墨紫   CMYK 53,92,55,81 */</span>
+  <span class="k">--tanzi</span>:      <span class="v">#381924</span>;  <span class="c">/* 檀紫   CMYK 48,90,50,76 */</span>
+
+  <span class="c">/* 30% 主体 */</span>
+  <span class="k">--qinglian</span>:   <span class="v">#8b2671</span>;  <span class="c">/* 青莲   CMYK 43,97,19,8 */</span>
+  <span class="k">--weizi</span>:      <span class="v">#7e1671</span>;  <span class="c">/* 魏紫   CMYK 52,100,17,7 */</span>
+
+  <span class="c">/* 撞色对冲 */</span>
+  <span class="k">--kongque</span>:    <span class="v">#0eb0c9</span>;  <span class="c">/* 孔雀蓝 CMYK 92,0,28,0 */</span>
+  <span class="k">--tonglv</span>:     <span class="v">#2bae85</span>;  <span class="c">/* 铜绿   CMYK 92,0,64,0 */</span>
+
+  <span class="c">/* 10% 点睛 */</span>
+  <span class="k">--tenghuang</span>:  <span class="v">#ffd111</span>;  <span class="c">/* 藤黄   CMYK 0,21,94,0 */</span>
+
+  <span class="c">/* 文字与描边 */</span>
+  <span class="k">--xuebai</span>:     <span class="v">#fffef9</span>;  <span class="c">/* 雪白   CMYK 0,1,3,0 */</span>
+  <span class="k">--xinghui</span>:    <span class="v">#b2bbbe</span>;  <span class="c">/* 星灰   CMYK 36,20,23,2 */</span>
+  <span class="k">--qianniuzi</span>:  <span class="v">#681752</span>;  <span class="c">/* 牵牛紫 CMYK 49,100,29,32 */</span>
+
+  <span class="c">/* ── 语义映射 ── */</span>
+  <span class="k">--bg</span>:         <span class="s">var(--mozi)</span>;
+  <span class="k">--surface</span>:    <span class="s">var(--tanzi)</span>;
+  <span class="k">--primary</span>:    <span class="s">var(--qinglian)</span>;    <span class="c">/* 配字用 --xuebai */</span>
+  <span class="k">--clash</span>:      <span class="s">var(--kongque)</span>;     <span class="c">/* 配字必须用 --mozi */</span>
+  <span class="k">--clash-alt</span>:  <span class="s">var(--tonglv)</span>;
+  <span class="k">--accent</span>:     <span class="s">var(--tenghuang)</span>;   <span class="c">/* 配字必须用 --mozi */</span>
+  <span class="k">--text</span>:       <span class="s">var(--xuebai)</span>;
+  <span class="k">--text-muted</span>: <span class="s">var(--xinghui)</span>;
+  <span class="k">--border</span>:     <span class="s">var(--qianniuzi)</span>;
+}</pre>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fp">接天莲叶无穷碧 · 映日荷花别样红</div>
+    <div class="fm">
+      DOUDOU-COLOR SKILL · 526 种中国传统色权威数据库<br>
+      全部色值取自 colors.json，对比度按 WCAG 2.1 相对亮度公式实算
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雨过天青 · 月白风清</title>
+<meta name="description" content="基于 526 种中国传统色构建的清新通透文创包装色谱方案">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@200;300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* ══════════════════════════════════════════════════════════════
+   雨过天青 · 月白风清 —— 清新通透文创包装色谱
+   全部色值出自 doudou-color skill / colors.json 526 种权威国色
+   五行主轴：水生木（霁青 → 葱绿），土色点睛（秋葵黄）
+   ══════════════════════════════════════════════════════════════ */
+:root {
+  /* ── 60% 底衬：月白通透 ── */
+  --yuebai:     #eef7f2;  /* 月白   [238,247,242]  CMYK[11,0,8,0]    月华浸水的青白 */
+  --xuebai:     #fffef9;  /* 雪白   [255,254,249]  CMYK[0,1,3,0]     卡片承接面 */
+  --nenjulv:    #f0f5e5;  /* 嫩菊绿 [240,245,229]  CMYK[9,1,14,0]    次级底衬微绿 */
+  --aibeilv:    #dfecd5;  /* 艾背绿 [223,236,213]  CMYK[20,1,23,0]   描边与柔填充 */
+
+  /* ── 30% 主体：天青骨架 ── */
+  --jiqing:     #63bbd0;  /* 霁青   [99,187,208]   CMYK[74,2,24,0]   汝窑雨过天青 */
+  --pubulan:    #51c4d3;  /* 瀑布蓝 [81,196,211]   CMYK[79,0,27,0]   主体提亮层 */
+
+  /* ── 辅助：草木生发 ── */
+  --conglv:     #40a070;  /* 葱绿   [64,160,112]   CMYK[90,7,73,0]   水生木，春岸新绿 */
+  --heyelv:     #1a6840;  /* 荷叶绿 [26,104,64]    CMYK[100,31,91,25] 深压／小字达标色 */
+  --pingguolv:  #bacf65;  /* 苹果绿 [186,207,101]  CMYK[41,4,76,0]   三相均衡辅色 */
+
+  /* ── 10% 点睛：素金一点 ── */
+  --qiukuihuang:#eed045;  /* 秋葵黄 [238,208,69]   CMYK[8,19,84,1]   木生火转土，画龙点睛 */
+
+  /* ── 墨骨文字 ── */
+  --qinghui:    #2b333e;  /* 青灰   [43,51,62]     CMYK[87,69,51,58] 正文墨骨 */
+  --tianluolv:  #5e665b;  /* 田螺绿 [94,102,91]    CMYK[62,42,56,34] 次级说明 */
+
+  /* ── 语义令牌 ── */
+  --bg:          var(--yuebai);
+  --surface:     var(--xuebai);
+  --surface-alt: var(--nenjulv);
+  --border:      var(--aibeilv);
+  --primary:     var(--jiqing);
+  --secondary:   var(--conglv);
+  --accent:      var(--qiukuihuang);
+  --text:        var(--qinghui);
+  --text-muted:  var(--tianluolv);
+
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow-soft: 0 1px 2px rgba(43,51,62,.03), 0 8px 28px -12px rgba(99,187,208,.28);
+  --shadow-lift: 0 2px 4px rgba(43,51,62,.04), 0 22px 50px -20px rgba(99,187,208,.42);
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Noto Sans SC", -apple-system, "PingFang SC", sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* 通透呼吸感：极淡的天青光晕漫射 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 12% 8%,  rgba(99,187,208,.13), transparent 62%),
+    radial-gradient(ellipse 55% 42% at 88% 22%, rgba(64,160,112,.09),  transparent 60%),
+    radial-gradient(ellipse 65% 40% at 50% 96%, rgba(238,208,69,.07),  transparent 62%);
+}
+
+.wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+/* ── 通用区块 ── */
+section { padding: 108px 0; }
+
+.sec-head { margin-bottom: 56px; }
+
+.sec-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--secondary); margin-bottom: 18px;
+}
+.sec-kicker::before {
+  content: ""; width: 30px; height: 1px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+
+h2 {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 500; font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  letter-spacing: .06em; line-height: 1.4;
+}
+.sec-desc { margin-top: 16px; max-width: 62ch; color: var(--text-muted); font-size: .95rem; }
+
+/* ══════════ HERO ══════════ */
+.hero { padding: 128px 0 96px; position: relative; }
+
+.hero-seal {
+  position: absolute; top: 118px; right: 32px;
+  width: 76px; height: 76px; border-radius: 12px;
+  background: var(--primary);
+  display: grid; place-items: center;
+  font-family: "Noto Serif SC", serif; font-size: 1.42rem; font-weight: 700;
+  color: var(--qinghui);           /* 青灰 on 霁青 = 5.80:1 AA */
+  letter-spacing: 0; line-height: 1.1; text-align: center;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(3deg);
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 7px 18px 7px 14px;
+  border: 1px solid var(--border); border-radius: 100px;
+  background: rgba(255,254,249,.72);
+  backdrop-filter: blur(8px);
+  font-family: "JetBrains Mono", monospace;
+  font-size: .7rem; letter-spacing: .16em; color: var(--text-muted);
+  margin-bottom: 34px;
+}
+.hero-tag i {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--secondary); box-shadow: 0 0 0 4px rgba(64,160,112,.16);
+}
+
+h1 {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 300;
+  font-size: clamp(2.7rem, 7.4vw, 5.1rem);
+  line-height: 1.22; letter-spacing: .09em;
+  margin-bottom: 30px;
+}
+h1 em {
+  font-style: normal; font-weight: 700;
+  background: linear-gradient(102deg, var(--heyelv) 0%, var(--primary) 52%, var(--conglv) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1 .sep { color: var(--border); font-weight: 200; padding: 0 .12em; }
+
+.hero-poem {
+  font-family: "Noto Serif SC", serif;
+  font-size: 1.06rem; font-weight: 300; line-height: 2.1;
+  color: var(--text-muted); max-width: 58ch;
+  padding-left: 22px; border-left: 2px solid var(--border);
+  margin-bottom: 40px;
+}
+.hero-poem cite {
+  display: block; margin-top: 10px;
+  font-size: .82rem; font-style: normal; letter-spacing: .1em;
+  color: var(--secondary);
+}
+
+.hero-strip { display: flex; height: 8px; border-radius: 100px; overflow: hidden; max-width: 480px; }
+.hero-strip span { flex: 1; transition: flex .5s var(--ease); }
+.hero-strip:hover span:hover { flex: 2.4; }
+
+/* ══════════ 色谱矩阵 ══════════ */
+.ratio-bar {
+  display: flex; height: 62px; border-radius: var(--radius-sm);
+  overflow: hidden; margin-bottom: 40px; box-shadow: var(--shadow-soft);
+}
+.ratio-bar div {
+  display: grid; place-items: center;
+  font-family: "JetBrains Mono", monospace; font-size: .74rem; letter-spacing: .1em;
+}
+
+.swatch-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+}
+
+.swatch {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.swatch:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+
+.swatch-chip {
+  height: 132px; position: relative;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 16px;
+}
+.swatch-role {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 100px;
+  background: rgba(255,254,249,.86); color: var(--text);
+}
+.swatch-wuxing {
+  font-family: "Noto Serif SC", serif; font-size: 1.5rem; font-weight: 500;
+  opacity: .5; line-height: 1;
+}
+
+.swatch-body { padding: 20px; }
+.swatch-name {
+  font-family: "Noto Serif SC", serif; font-size: 1.28rem; font-weight: 500;
+  letter-spacing: .1em; display: flex; align-items: baseline; gap: 10px;
+}
+.swatch-name small {
+  font-family: "JetBrains Mono", monospace; font-size: .64rem;
+  letter-spacing: .1em; color: var(--text-muted); font-weight: 400;
+}
+.swatch-note { font-size: .82rem; color: var(--text-muted); margin: 8px 0 16px; line-height: 1.7; }
+
+.swatch-data { border-top: 1px dashed var(--border); padding-top: 13px; display: grid; gap: 6px; }
+.swatch-data div {
+  display: flex; justify-content: space-between; gap: 12px;
+  font-family: "JetBrains Mono", monospace; font-size: .68rem;
+}
+.swatch-data dt { color: var(--text-muted); letter-spacing: .1em; }
+.swatch-data dd { color: var(--text); font-weight: 500; }
+.swatch-data .hex dd { font-weight: 700; }
+
+/* ══════════ 五行流转 ══════════ */
+.wuxing {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 52px 40px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px; align-items: center; text-align: center;
+}
+.wx-node { display: grid; gap: 12px; justify-items: center; }
+.wx-orb {
+  width: 74px; height: 74px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: "Noto Serif SC", serif; font-size: 1.68rem; font-weight: 500;
+  position: relative;
+}
+.wx-orb::after {
+  content: ""; position: absolute; inset: -9px;
+  border: 1px dashed var(--border); border-radius: 50%;
+}
+.wx-label { font-family: "Noto Serif SC", serif; font-size: 1.02rem; letter-spacing: .1em; }
+.wx-sub {
+  font-family: "JetBrains Mono", monospace; font-size: .64rem;
+  letter-spacing: .12em; color: var(--text-muted);
+}
+.wx-arrow {
+  font-size: 1.2rem; color: var(--primary);
+  display: grid; gap: 3px; justify-items: center;
+}
+.wx-arrow small {
+  font-family: "JetBrains Mono", monospace; font-size: .58rem;
+  letter-spacing: .12em; color: var(--text-muted);
+}
+
+/* ══════════ 包装应用（纯 CSS 模拟） ══════════ */
+.pack-grid {
+  display: grid; gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.pack {
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.pack:hover { transform: translateY(-7px); box-shadow: var(--shadow-lift); }
+
+.pack-view { height: 320px; position: relative; overflow: hidden; padding: 30px; }
+.pack-cap {
+  background: var(--surface); padding: 18px 22px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+}
+.pack-cap b { font-family: "Noto Serif SC", serif; font-weight: 500; letter-spacing: .08em; font-size: .96rem; }
+.pack-cap span {
+  font-family: "JetBrains Mono", monospace; font-size: .62rem;
+  letter-spacing: .1em; color: var(--text-muted); text-align: right; flex-shrink: 0;
+}
+
+/* ① 茶礼盒：天青为面，烫金一线 */
+.pk-tea { background: linear-gradient(158deg, var(--jiqing) 0%, var(--pubulan) 100%); }
+.pk-tea .lid {
+  position: absolute; inset: 30px 30px auto 30px; height: 176px;
+  background: rgba(255,254,249,.93);
+  border-radius: 6px; padding: 26px 24px;
+  box-shadow: 0 18px 40px -18px rgba(43,51,62,.3);
+}
+.pk-tea .brand {
+  font-family: "Noto Serif SC", serif; font-size: 1.72rem; font-weight: 300;
+  letter-spacing: .3em; line-height: 1.35; color: var(--heyelv);
+}
+.pk-tea .rule { width: 44px; height: 2px; background: var(--accent); margin: 14px 0 12px; }
+.pk-tea .en {
+  font-family: "JetBrains Mono", monospace; font-size: .6rem;
+  letter-spacing: .2em; color: var(--text-muted);
+}
+.pk-tea .foot {
+  position: absolute; left: 30px; right: 30px; bottom: 30px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  font-family: "JetBrains Mono", monospace; font-size: .6rem;
+  letter-spacing: .14em; color: var(--qinghui);
+}
+
+/* ② 香氛盒：月白基底，草木环抱 */
+.pk-scent { background: var(--yuebai); }
+.pk-scent .band {
+  position: absolute; left: 0; right: 0; top: 96px; height: 62px;
+  background: var(--aibeilv);
+}
+.pk-scent .circle {
+  position: absolute; top: 52px; left: 50%; transform: translateX(-50%);
+  width: 150px; height: 150px; border-radius: 50%;
+  background: var(--surface); border: 1.5px solid var(--conglv);
+  display: grid; place-items: center; align-content: center; gap: 4px;
+}
+.pk-scent .circle b {
+  font-family: "Noto Serif SC", serif; font-size: 1.9rem; font-weight: 400;
+  letter-spacing: .16em; color: var(--heyelv);
+}
+.pk-scent .circle small {
+  font-family: "JetBrains Mono", monospace; font-size: .55rem;
+  letter-spacing: .22em; color: var(--text-muted);
+}
+.pk-scent .tags {
+  position: absolute; left: 30px; right: 30px; bottom: 30px;
+  display: flex; gap: 7px; flex-wrap: wrap; justify-content: center;
+}
+.pk-scent .tags i {
+  font-style: normal; padding: 5px 12px; border-radius: 100px;
+  font-size: .64rem; letter-spacing: .1em;
+  background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
+}
+
+/* ③ 手提袋：葱绿主袋，秋葵黄提绳 */
+.pk-bag { background: var(--nenjulv); display: grid; place-items: center; }
+.pk-bag .bag {
+  width: 196px; height: 232px; position: relative;
+  background: linear-gradient(168deg, var(--conglv), var(--heyelv));
+  border-radius: 4px 4px 7px 7px;
+  box-shadow: 0 24px 46px -20px rgba(26,104,64,.5);
+  padding: 30px 22px;
+}
+.pk-bag .bag::before,
+.pk-bag .bag::after {
+  content: ""; position: absolute; top: -26px;
+  width: 52px; height: 30px;
+  border: 2.5px solid var(--accent); border-bottom: none;
+  border-radius: 32px 32px 0 0;
+}
+.pk-bag .bag::before { left: 30px; }
+.pk-bag .bag::after  { right: 30px; }
+.pk-bag .bag b {
+  display: block;
+  font-family: "Noto Serif SC", serif; font-size: 1.34rem; font-weight: 400;
+  letter-spacing: .26em; line-height: 1.6;
+  color: var(--xuebai);              /* 雪白 on 荷叶绿 = 6.71:1 AA */
+}
+.pk-bag .bag em {
+  position: absolute; left: 22px; bottom: 30px;
+  font-style: normal; font-family: "JetBrains Mono", monospace;
+  font-size: .56rem; letter-spacing: .18em; color: rgba(255,254,249,.72);
+}
+.pk-bag .bag i {
+  position: absolute; right: 22px; bottom: 28px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ④ 贴纸／封缄 */
+.pk-seal {
+  background: var(--surface);
+  display: grid; grid-template-columns: repeat(2, auto);
+  place-content: center; justify-items: center; gap: 20px 24px;
+}
+.seal-dot {
+  width: 92px; height: 92px; border-radius: 50%;
+  display: grid; place-items: center; align-content: center;
+  font-family: "Noto Serif SC", serif; line-height: 1.2; text-align: center;
+}
+.seal-dot b { font-size: 1.36rem; font-weight: 500; letter-spacing: .06em; }
+.seal-dot small { font-family: "JetBrains Mono", monospace; font-size: .5rem; letter-spacing: .16em; opacity: .78; }
+.sd1 { background: var(--jiqing);       color: var(--qinghui); }   /* 5.80:1 */
+.sd2 { background: var(--aibeilv);      color: var(--qinghui); }   /* 10.39:1 */
+.sd3 { background: var(--qiukuihuang);  color: var(--qinghui); }   /* 8.35:1 */
+.sd4 { background: var(--heyelv);       color: var(--xuebai); }    /* 6.71:1 */
+
+/* ══════════ UI 组件演示 ══════════ */
+.ui-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+.card h3 {
+  font-family: "Noto Serif SC", serif; font-size: 1.1rem; font-weight: 500;
+  letter-spacing: .09em; margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.card h3::before {
+  content: ""; width: 3px; height: 15px; border-radius: 2px;
+  background: var(--primary);
+}
+
+.row { display: flex; flex-wrap: wrap; gap: 11px; align-items: center; margin-bottom: 15px; }
+.row:last-child { margin-bottom: 0; }
+
+.btn {
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: .86rem; font-weight: 500; letter-spacing: .06em;
+  padding: 11px 24px; border-radius: 100px; border: 1px solid transparent;
+  cursor: pointer; transition: all .3s var(--ease);
+}
+/* 主按钮用荷叶绿：白字 6.71:1 达 AA；霁青仅作 hover 提亮 */
+.btn-primary { background: var(--heyelv); color: var(--xuebai); }
+.btn-primary:hover { background: var(--conglv); transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(26,104,64,.55); }
+/* 天青底必须配深墨字 5.80:1，切勿用白字（2.18:1 不合格） */
+.btn-sky { background: var(--jiqing); color: var(--qinghui); }
+.btn-sky:hover { background: var(--pubulan); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--heyelv); border-color: var(--conglv); }
+.btn-ghost:hover { background: var(--aibeilv); }
+/* 点睛色按钮：秋葵黄 + 青灰字 8.35:1 */
+.btn-accent { background: var(--accent); color: var(--qinghui); font-weight: 700; }
+.btn-accent:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(238,208,69,.7); }
+
+.badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .64rem; letter-spacing: .12em;
+  padding: 5px 12px; border-radius: 100px;
+}
+.bg-sky    { background: var(--jiqing);      color: var(--qinghui); }
+.bg-leaf   { background: var(--aibeilv);     color: var(--heyelv); }
+.bg-gold   { background: var(--qiukuihuang); color: var(--qinghui); }
+.bg-apple  { background: var(--pingguolv);   color: var(--qinghui); }
+.bg-line   { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+
+/* 输入框 / Tab / 进度 */
+.field {
+  width: 100%; font-family: inherit; font-size: .88rem;
+  padding: 12px 16px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--surface-alt);
+  color: var(--text); transition: all .3s var(--ease);
+}
+.field::placeholder { color: var(--text-muted); opacity: .7; }
+.field:focus {
+  outline: none; background: var(--surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99,187,208,.2);
+}
+
+.tabs { display: flex; gap: 4px; padding: 5px; background: var(--surface-alt); border-radius: 100px; }
+.tab {
+  flex: 1; text-align: center; font-size: .82rem; font-weight: 500;
+  padding: 9px 4px; border-radius: 100px; cursor: pointer;
+  color: var(--text-muted); transition: all .3s var(--ease);
+}
+.tab.on { background: var(--surface); color: var(--heyelv); box-shadow: 0 2px 8px -3px rgba(43,51,62,.16); }
+.tab:not(.on):hover { color: var(--heyelv); }
+
+.meter { height: 7px; border-radius: 100px; background: var(--aibeilv); overflow: hidden; }
+.meter i { display: block; height: 100%; border-radius: 100px; }
+.m1 { width: 76%; background: linear-gradient(90deg, var(--conglv), var(--jiqing)); }
+.m2 { width: 48%; background: linear-gradient(90deg, var(--jiqing), var(--pubulan)); }
+.m3 { width: 22%; background: var(--accent); }
+.meter-label {
+  display: flex; justify-content: space-between;
+  font-family: "JetBrains Mono", monospace; font-size: .62rem;
+  color: var(--text-muted); margin-bottom: 7px; letter-spacing: .1em;
+}
+
+/* ══════════ 数据表 ══════════ */
+.table-wrap {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow-x: auto;
+}
+table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 660px; }
+thead th {
+  background: var(--surface-alt);
+  font-family: "JetBrains Mono", monospace; font-weight: 500;
+  font-size: .64rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-muted); text-align: left;
+  padding: 15px 18px; white-space: nowrap;
+}
+tbody td { padding: 15px 18px; border-top: 1px solid var(--border); vertical-align: middle; }
+tbody tr:hover { background: rgba(240,245,229,.55); }
+td.mono, th.mono { font-family: "JetBrains Mono", monospace; font-size: .74rem; }
+.cell-name { display: flex; align-items: center; gap: 11px; white-space: nowrap; }
+.cell-dot { width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(43,51,62,.1); flex-shrink: 0; }
+.cell-name b { font-family: "Noto Serif SC", serif; font-weight: 500; letter-spacing: .06em; }
+
+/* 状态色亦取自 526 色库：橄榄绿 7.64:1 / 火岩棕 8.46:1（雪白底） */
+.pass { color: var(--heyelv);   font-weight: 700; }  /* 荷叶绿 */
+.warn { color: #5e5314;         font-weight: 700; }  /* 橄榄绿 */
+.fail { color: #863020;         font-weight: 700; }  /* 火岩棕 */
+
+/* ══════════ 工艺指南 ══════════ */
+.craft-grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); }
+.craft {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 30px;
+  border-top: 3px solid var(--primary);
+}
+.craft:nth-child(2) { border-top-color: var(--conglv); }
+.craft:nth-child(3) { border-top-color: var(--accent); }
+.craft:nth-child(4) { border-top-color: var(--pingguolv); }
+.craft h4 {
+  font-family: "Noto Serif SC", serif; font-size: 1.04rem; font-weight: 500;
+  letter-spacing: .08em; margin-bottom: 8px;
+}
+.craft .cn {
+  font-family: "JetBrains Mono", monospace; font-size: .6rem;
+  letter-spacing: .16em; color: var(--secondary); margin-bottom: 16px;
+}
+.craft ul { list-style: none; display: grid; gap: 11px; }
+.craft li {
+  font-size: .84rem; color: var(--text-muted); line-height: 1.7;
+  padding-left: 16px; position: relative;
+}
+.craft li::before {
+  content: ""; position: absolute; left: 0; top: .62em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--border);
+}
+.craft li b { color: var(--text); font-weight: 500; }
+
+/* ══════════ 代码块 ══════════ */
+.code {
+  background: var(--qinghui); border-radius: var(--radius);
+  padding: 30px 32px; overflow-x: auto;
+  font-family: "JetBrains Mono", monospace; font-size: .76rem; line-height: 2.05;
+  box-shadow: var(--shadow-soft);
+}
+.code pre { color: var(--aibeilv); }
+.code .k { color: var(--pubulan); }
+.code .v { color: var(--qiukuihuang); }
+.code .c { color: #648e93; font-style: italic; }  /* 晚波蓝，青灰底 3.62:1 */
+.code .s { color: var(--pingguolv); }
+
+/* ══════════ 页脚 ══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 52px 0 64px; margin-top: 40px;
+  text-align: center;
+}
+footer .fp {
+  font-family: "Noto Serif SC", serif; font-size: 1.16rem; font-weight: 300;
+  letter-spacing: .2em; color: var(--secondary); margin-bottom: 14px;
+}
+footer .fm {
+  font-family: "JetBrains Mono", monospace; font-size: .64rem;
+  letter-spacing: .14em; color: var(--text-muted); line-height: 2;
+}
+
+/* ══════════ 响应式 ══════════ */
+@media (max-width: 720px) {
+  .wrap { padding: 0 20px; }
+  section { padding: 74px 0; }
+  .hero { padding: 84px 0 68px; }
+  .hero-seal { width: 58px; height: 58px; font-size: 1.06rem; top: 78px; right: 20px; }
+  .wuxing { padding: 36px 22px; }
+  .wx-arrow { transform: rotate(90deg); }
+  .card, .craft { padding: 24px; }
+  .pk-seal { gap: 16px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-seal">天青</div>
+
+    <div class="hero-tag">
+      <i></i>清新明快 · 轻盈治愈 · 文创包装色谱
+    </div>
+
+    <h1><em>雨过天青</em><span class="sep">·</span><em>月白风清</em></h1>
+
+    <p class="hero-poem">
+      汝窑的天青，是雨收云散那一刻天光落进釉里的颜色 —— 不浓不烈，却自带一层水气。
+      以月白铺六成底衬留出呼吸，霁青立三成骨架撑住通透，秋葵黄只点一成，
+      如晴日里一粒花蕊落在素纸上。全谱十二色皆出自 526 种权威国色。
+      <cite>「月白风清，如此良夜何」——  苏轼《后赤壁赋》</cite>
+    </p>
+
+    <div class="hero-strip">
+      <span style="background:#eef7f2"></span>
+      <span style="background:#dfecd5"></span>
+      <span style="background:#bacf65"></span>
+      <span style="background:#40a070"></span>
+      <span style="background:#63bbd0"></span>
+      <span style="background:#51c4d3"></span>
+      <span style="background:#eed045"></span>
+      <span style="background:#1a6840"></span>
+      <span style="background:#2b333e"></span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════ 60-30-10 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Palette Matrix / 色谱矩阵</div>
+      <h2>六三一留白法则</h2>
+      <p class="sec-desc">
+        通透感的来源不是色彩本身，而是色彩之间的留白比例。月白系占据六成以上视野，
+        主体色只在必要处落笔，点睛色克制到一成以内 —— 这是包装拿在手上"轻"的根本原因。
+      </p>
+    </div>
+
+    <div class="ratio-bar">
+      <div style="flex:6;background:#eef7f2;color:#2b333e">60% 月白底衬</div>
+      <div style="flex:3;background:#63bbd0;color:#2b333e">30% 霁青主体</div>
+      <div style="flex:1;background:#eed045;color:#2b333e">10%</div>
+    </div>
+
+    <div class="swatch-grid">
+
+      <!-- 月白 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#eef7f2">
+          <span class="swatch-role">Base 60%</span>
+          <span class="swatch-wuxing" style="color:#40a070">木</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">月白 <small>yuebai</small></div>
+          <p class="swatch-note">月华浸水的极浅青白，是整套方案"透气"的根基。大面积铺陈不压眼。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#eef7f2</dd></div>
+            <div><dt>RGB</dt><dd>238, 247, 242</dd></div>
+            <div><dt>CMYK</dt><dd>11, 0, 8, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 雪白 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#fffef9;border-bottom:1px solid #dfecd5">
+          <span class="swatch-role" style="border:1px solid #dfecd5">Surface</span>
+          <span class="swatch-wuxing" style="color:#bacf65">土</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">雪白 <small>xuebai</small></div>
+          <p class="swatch-note">带一丝暖意的纯白，用于卡片与承接面，与月白形成微妙的冷暖层次。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#fffef9</dd></div>
+            <div><dt>RGB</dt><dd>255, 254, 249</dd></div>
+            <div><dt>CMYK</dt><dd>0, 1, 3, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 嫩菊绿 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#f0f5e5">
+          <span class="swatch-role">Surface Alt</span>
+          <span class="swatch-wuxing" style="color:#40a070">木</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">嫩菊绿 <small>nenjulv</small></div>
+          <p class="swatch-note">初绽菊瓣的浅绿白，作次级底衬与输入框填充，比纯灰更有生气。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#f0f5e5</dd></div>
+            <div><dt>RGB</dt><dd>240, 245, 229</dd></div>
+            <div><dt>CMYK</dt><dd>9, 1, 14, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 艾背绿 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#dfecd5">
+          <span class="swatch-role">Border</span>
+          <span class="swatch-wuxing" style="color:#40a070">木</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">艾背绿 <small>aibeilv</small></div>
+          <p class="swatch-note">艾叶背面的霜绿，用作描边与柔性填充。替代冷灰描边，界面立刻变软。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#dfecd5</dd></div>
+            <div><dt>RGB</dt><dd>223, 236, 213</dd></div>
+            <div><dt>CMYK</dt><dd>20, 1, 23, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 霁青 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#63bbd0">
+          <span class="swatch-role">Primary 30%</span>
+          <span class="swatch-wuxing" style="color:#fffef9">水</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">霁青 <small>jiqing</small></div>
+          <p class="swatch-note">雨过天青的正色，汝窑釉色一脉。方案的视觉锚点，通透感的核心担当。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#63bbd0</dd></div>
+            <div><dt>RGB</dt><dd>99, 187, 208</dd></div>
+            <div><dt>CMYK</dt><dd>74, 2, 24, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 瀑布蓝 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#51c4d3">
+          <span class="swatch-role">Primary Light</span>
+          <span class="swatch-wuxing" style="color:#fffef9">水</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">瀑布蓝 <small>pubulan</small></div>
+          <p class="swatch-note">霁青的相邻色，飞瀑溅玉之青。用于 hover 提亮与渐变过渡，衔接自然。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#51c4d3</dd></div>
+            <div><dt>RGB</dt><dd>81, 196, 211</dd></div>
+            <div><dt>CMYK</dt><dd>79, 0, 27, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 葱绿 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#40a070">
+          <span class="swatch-role">Secondary</span>
+          <span class="swatch-wuxing" style="color:#fffef9">木</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">葱绿 <small>conglv</small></div>
+          <p class="swatch-note">水生木的落点，春岸新绿。承担"治愈"的生机感，也是次级按钮描边色。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#40a070</dd></div>
+            <div><dt>RGB</dt><dd>64, 160, 112</dd></div>
+            <div><dt>CMYK</dt><dd>90, 7, 73, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 荷叶绿 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#1a6840">
+          <span class="swatch-role">Action</span>
+          <span class="swatch-wuxing" style="color:#dfecd5">木</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">荷叶绿 <small>heyelv</small></div>
+          <p class="swatch-note">葱绿的深压层。承载白字达 6.71:1，是本方案唯一可做实心主按钮的深色。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#1a6840</dd></div>
+            <div><dt>RGB</dt><dd>26, 104, 64</dd></div>
+            <div><dt>CMYK</dt><dd>100, 31, 91, 25</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 苹果绿 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#bacf65">
+          <span class="swatch-role">Tertiary</span>
+          <span class="swatch-wuxing" style="color:#2b333e">木</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">苹果绿 <small>pingguolv</small></div>
+          <p class="swatch-note">霁青的三相均衡色，青苹初熟。用于标签与插画分区，明快不抢戏。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#bacf65</dd></div>
+            <div><dt>RGB</dt><dd>186, 207, 101</dd></div>
+            <div><dt>CMYK</dt><dd>41, 4, 76, 0</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 秋葵黄 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#eed045">
+          <span class="swatch-role">Accent 10%</span>
+          <span class="swatch-wuxing" style="color:#2b333e">土</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">秋葵黄 <small>qiukuihuang</small></div>
+          <p class="swatch-note">全谱唯一暖色，与霁青形成冷暖张力。严格控制在一成以内，多则失轻。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#eed045</dd></div>
+            <div><dt>RGB</dt><dd>238, 208, 69</dd></div>
+            <div><dt>CMYK</dt><dd>8, 19, 84, 1</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 青灰 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#2b333e">
+          <span class="swatch-role">Text</span>
+          <span class="swatch-wuxing" style="color:#63bbd0">水</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">青灰 <small>qinghui</small></div>
+          <p class="swatch-note">带蓝调的墨骨，比纯黑轻。月白底上 11.68:1 达 AAA，也是天青底的配字色。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#2b333e</dd></div>
+            <div><dt>RGB</dt><dd>43, 51, 62</dd></div>
+            <div><dt>CMYK</dt><dd>87, 69, 51, 58</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 田螺绿 -->
+      <article class="swatch">
+        <div class="swatch-chip" style="background:#5e665b">
+          <span class="swatch-role">Text Muted</span>
+          <span class="swatch-wuxing" style="color:#dfecd5">木</span>
+        </div>
+        <div class="swatch-body">
+          <div class="swatch-name">田螺绿 <small>tianluolv</small></div>
+          <p class="swatch-note">灰中带青的次级文字色，月白底上 5.45:1 达 AA，说明文案不刺眼。</p>
+          <dl class="swatch-data">
+            <div class="hex"><dt>HEX</dt><dd>#5e665b</dd></div>
+            <div><dt>RGB</dt><dd>94, 102, 91</dd></div>
+            <div><dt>CMYK</dt><dd>62, 42, 56, 34</dd></div>
+          </dl>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 五行 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Wu Xing / 五行流转</div>
+      <h2>水生木 · 木生火转土</h2>
+      <p class="sec-desc">
+        清新感在五行上有明确路径：以水（霁青）润木（葱绿），气机自然向上升发，这是"生"而非"克"的关系，
+        故观感和缓、不起冲突。末端引一点土色（秋葵黄）收住，避免满盘青绿过于寒凉。
+      </p>
+    </div>
+
+    <div class="wuxing">
+      <div class="wx-node">
+        <div class="wx-orb" style="background:#63bbd0;color:#2b333e">水</div>
+        <div class="wx-label">霁青</div>
+        <div class="wx-sub">#63BBD0</div>
+      </div>
+
+      <div class="wx-arrow">→<small>生</small></div>
+
+      <div class="wx-node">
+        <div class="wx-orb" style="background:#40a070;color:#fffef9">木</div>
+        <div class="wx-label">葱绿</div>
+        <div class="wx-sub">#40A070</div>
+      </div>
+
+      <div class="wx-arrow">→<small>生</small></div>
+
+      <div class="wx-node">
+        <div class="wx-orb" style="background:#eed045;color:#2b333e">土</div>
+        <div class="wx-label">秋葵黄</div>
+        <div class="wx-sub">#EED045</div>
+      </div>
+
+      <div class="wx-arrow">→<small>润</small></div>
+
+      <div class="wx-node">
+        <div class="wx-orb" style="background:#eef7f2;color:#40a070;border:1px solid #dfecd5">白</div>
+        <div class="wx-label">月白</div>
+        <div class="wx-sub">#EEF7F2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 包装应用 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Packaging / 包装落地</div>
+      <h2>四类文创载体演示</h2>
+      <p class="sec-desc">
+        以下模拟稿全部由纯 CSS 绘制，未使用任何图片。可直接查看源码取用配色与版式比例关系。
+      </p>
+    </div>
+
+    <div class="pack-grid">
+
+      <!-- 茶礼盒 -->
+      <div class="pack">
+        <div class="pack-view pk-tea">
+          <div class="lid">
+            <div class="brand">春山<br>可望</div>
+            <div class="rule"></div>
+            <div class="en">CHUNSHAN KEWANG · TEA SET</div>
+          </div>
+          <div class="foot">
+            <span>净含量 120g</span>
+            <span>明前 · 头采</span>
+          </div>
+        </div>
+        <div class="pack-cap">
+          <b>茶礼硬盒</b>
+          <span>天青满印 + 烫金细线<br>雪白冠部击凸</span>
+        </div>
+      </div>
+
+      <!-- 香氛盒 -->
+      <div class="pack">
+        <div class="pack-view pk-scent">
+          <div class="band"></div>
+          <div class="circle">
+            <b>清露</b>
+            <small>MORNING DEW</small>
+          </div>
+          <div class="tags">
+            <i>白茶</i><i>雪松</i><i>鼠尾草</i><i>30ml</i>
+          </div>
+        </div>
+        <div class="pack-cap">
+          <b>香氛纸盒</b>
+          <span>月白特种纸 + 艾背绿腰封<br>葱绿单色圆环</span>
+        </div>
+      </div>
+
+      <!-- 手提袋 -->
+      <div class="pack">
+        <div class="pack-view pk-bag">
+          <div class="bag">
+            <b>草木<br>有本</b>
+            <em>CAOMU YOUBEN</em>
+            <i></i>
+          </div>
+        </div>
+        <div class="pack-cap">
+          <b>手提纸袋</b>
+          <span>荷叶绿渐变 + 秋葵黄棉绳<br>雪白丝网印字</span>
+        </div>
+      </div>
+
+      <!-- 封缄贴纸 -->
+      <div class="pack">
+        <div class="pack-view pk-seal">
+          <div class="seal-dot sd1"><b>青</b><small>5.80:1</small></div>
+          <div class="seal-dot sd2"><b>艾</b><small>10.39:1</small></div>
+          <div class="seal-dot sd3"><b>秋</b><small>8.35:1</small></div>
+          <div class="seal-dot sd4"><b>荷</b><small>6.71:1</small></div>
+        </div>
+        <div class="pack-cap">
+          <b>封缄贴纸组</b>
+          <span>四色均已通过 WCAG AA<br>哑光不干胶</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ UI 组件 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">UI Components / 界面组件</div>
+      <h2>配套数字界面元件</h2>
+      <p class="sec-desc">
+        文创品牌通常需要配套的小程序或详情页。这里给出同一套色谱在界面上的落地形态，
+        按钮配色已按对比度结论调整：实心主按钮用荷叶绿而非霁青。
+      </p>
+    </div>
+
+    <div class="ui-grid">
+
+      <div class="card">
+        <h3>按钮层级</h3>
+        <div class="row">
+          <button class="btn btn-primary">立即购买</button>
+          <button class="btn btn-sky">加入购物车</button>
+        </div>
+        <div class="row">
+          <button class="btn btn-ghost">查看详情</button>
+          <button class="btn btn-accent">限时礼赠</button>
+        </div>
+        <p style="font-size:.78rem;color:var(--text-muted);margin-top:16px;line-height:1.7">
+          天青底按钮配青灰字（5.80:1），不可配白字 —— 白字仅 2.18:1，远低于 4.5:1 阈值。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>标签徽章</h3>
+        <div class="row">
+          <span class="badge bg-sky">新品上市</span>
+          <span class="badge bg-leaf">草木染</span>
+          <span class="badge bg-gold">礼盒装</span>
+        </div>
+        <div class="row">
+          <span class="badge bg-apple">当季限定</span>
+          <span class="badge bg-line">顺丰包邮</span>
+        </div>
+        <p style="font-size:.78rem;color:var(--text-muted);margin-top:16px;line-height:1.7">
+          浅底徽章统一配青灰字，四款均在 7:1 以上，达 AAA 级。
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>表单与切换</h3>
+        <div class="row" style="display:block">
+          <input class="field" type="text" placeholder="请输入收货人姓名" aria-label="收货人姓名">
+        </div>
+        <div class="row" style="display:block;margin-top:14px">
+          <div class="tabs" role="tablist">
+            <div class="tab on" role="tab" aria-selected="true">全部</div>
+            <div class="tab" role="tab" aria-selected="false">茶器</div>
+            <div class="tab" role="tab" aria-selected="false">香品</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>数据进度</h3>
+        <div style="margin-bottom:20px">
+          <div class="meter-label"><span>众筹达成</span><span>76%</span></div>
+          <div class="meter"><i class="m1"></i></div>
+        </div>
+        <div style="margin-bottom:20px">
+          <div class="meter-label"><span>库存余量</span><span>48%</span></div>
+          <div class="meter"><i class="m2"></i></div>
+        </div>
+        <div>
+          <div class="meter-label"><span>限量剩余</span><span>22%</span></div>
+          <div class="meter"><i class="m3"></i></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 对比度 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">WCAG 2.1 / 无障碍实测</div>
+      <h2>对比度实测与用法边界</h2>
+      <p class="sec-desc">
+        下表数值为按 WCAG 2.1 相对亮度公式实算所得，非估值。高明度方案最容易踩的坑就是对比度不足，
+        因此明确标注每个组合的可用范围 —— 不达标的组合并非不能用，而是只能用于装饰性色块。
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>前景色</th>
+            <th>背景色</th>
+            <th class="mono">对比度</th>
+            <th class="mono">等级</th>
+            <th>适用范围</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#2b333e"></span><b>青灰</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#eef7f2"></span><b>月白</b></div></td>
+            <td class="mono">11.68:1</td>
+            <td class="mono pass">AAA</td>
+            <td>正文、标题，任意字号</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#2b333e"></span><b>青灰</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9"></span><b>雪白</b></div></td>
+            <td class="mono">12.64:1</td>
+            <td class="mono pass">AAA</td>
+            <td>卡片内正文，任意字号</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#2b333e"></span><b>青灰</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#dfecd5"></span><b>艾背绿</b></div></td>
+            <td class="mono">10.39:1</td>
+            <td class="mono pass">AAA</td>
+            <td>浅绿色块上的文字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#2b333e"></span><b>青灰</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#eed045"></span><b>秋葵黄</b></div></td>
+            <td class="mono">8.35:1</td>
+            <td class="mono pass">AAA</td>
+            <td>点睛色按钮与徽章</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#2b333e"></span><b>青灰</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#bacf65"></span><b>苹果绿</b></div></td>
+            <td class="mono">7.41:1</td>
+            <td class="mono pass">AAA</td>
+            <td>标签、分区标注</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9;border-color:#dfecd5"></span><b>雪白</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#1a6840"></span><b>荷叶绿</b></div></td>
+            <td class="mono">6.71:1</td>
+            <td class="mono pass">AA</td>
+            <td>实心主按钮、手提袋印字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#1a6840"></span><b>荷叶绿</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#eef7f2"></span><b>月白</b></div></td>
+            <td class="mono">6.20:1</td>
+            <td class="mono pass">AA</td>
+            <td>强调标题、链接文字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#2b333e"></span><b>青灰</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#63bbd0"></span><b>霁青</b></div></td>
+            <td class="mono">5.80:1</td>
+            <td class="mono pass">AA</td>
+            <td>天青底按钮的唯一合规配字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#5e665b"></span><b>田螺绿</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#eef7f2"></span><b>月白</b></div></td>
+            <td class="mono">5.45:1</td>
+            <td class="mono pass">AA</td>
+            <td>次级说明、时间戳</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#5e665b"></span><b>田螺绿</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#dfecd5"></span><b>艾背绿</b></div></td>
+            <td class="mono">4.85:1</td>
+            <td class="mono pass">AA</td>
+            <td>浅绿块上的次级文字</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9;border-color:#dfecd5"></span><b>雪白</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#40a070"></span><b>葱绿</b></div></td>
+            <td class="mono">3.21:1</td>
+            <td class="mono warn">AA Large</td>
+            <td>仅限 18pt 以上大字或粗体</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#63bbd0"></span><b>霁青</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#eef7f2"></span><b>月白</b></div></td>
+            <td class="mono">2.01:1</td>
+            <td class="mono fail">不达标</td>
+            <td>禁用于文字，仅作色块／图形</td>
+          </tr>
+          <tr>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#fffef9;border-color:#dfecd5"></span><b>雪白</b></div></td>
+            <td><div class="cell-name"><span class="cell-dot" style="background:#63bbd0"></span><b>霁青</b></div></td>
+            <td class="mono">2.18:1</td>
+            <td class="mono fail">不达标</td>
+            <td>禁用组合，改配青灰字</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 工艺指南 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Production / 印制工艺</div>
+      <h2>纸张与后道工艺建议</h2>
+      <p class="sec-desc">
+        高明度浅色方案对纸张与工艺极其敏感 —— 同一组 CMYK 值印在铜版纸与特种纸上，
+        通透感差别很大。以下为落地时需要交代给印厂的要点。
+      </p>
+    </div>
+
+    <div class="craft-grid">
+
+      <div class="craft">
+        <h4>纸张选型</h4>
+        <div class="cn">PAPER STOCK</div>
+        <ul>
+          <li><b>首选特种纸</b>：星采、丝润等微纹哑面纸，纸面本身带细腻肌理，浅色区呈现"呼吸感"。</li>
+          <li><b>次选轻涂纸</b>：120–157g 哑粉纸，比铜版纸少反光，避免月白区泛出塑料光泽。</li>
+          <li><b>避开高白铜版</b>：镜面反光会让霁青显脏、月白显灰。</li>
+          <li><b>盒型建材</b>：内衬可用未漂白牛皮纸，与月白形成质朴对照。</li>
+        </ul>
+      </div>
+
+      <div class="craft">
+        <h4>四色印刷把控</h4>
+        <div class="cn">CMYK CONTROL</div>
+        <ul>
+          <li><b>月白 C11 M0 Y8 K0</b>：网点极浅，务必要求印厂打样确认，防止跳网变纯白。</li>
+          <li><b>霁青 C74 M2 Y24 K0</b>：青版占比高，需盯紧 C 版实地密度，偏差会直接转灰或转绿。</li>
+          <li><b>荷叶绿 K25</b>：含黑版，深色区注意总墨量，避免背面透印。</li>
+          <li><b>专色替代</b>：若预算允许，霁青建议改用专色印刷，四色叠印难以稳定复现汝窑釉感。</li>
+        </ul>
+      </div>
+
+      <div class="craft">
+        <h4>后道工艺</h4>
+        <div class="cn">FINISHING</div>
+        <ul>
+          <li><b>哑膜为主</b>：切勿覆光膜，会破坏通透气质。哑膜或过油即可。</li>
+          <li><b>烫金克制</b>：秋葵黄区域可改烫哑光浅金，面积控制在版面一成以内。</li>
+          <li><b>击凸留白</b>：品牌字建议素击凸（无墨压凸），靠光影而非颜色出层次。</li>
+          <li><b>局部 UV</b>：仅用于圆形徽记等小面积图形，做出釉面水光感。</li>
+        </ul>
+      </div>
+
+      <div class="craft">
+        <h4>数字端注意</h4>
+        <div class="cn">DIGITAL NOTES</div>
+        <ul>
+          <li><b>禁用组合已标注</b>：霁青底白字、月白底霁青字均不可用于正文。</li>
+          <li><b>深色模式需换轴</b>：本方案为浅色专用，转深色应以青灰为底、艾背绿为文字。</li>
+          <li><b>焦点态可见</b>：输入框聚焦使用 4px 天青光圈，键盘操作可辨。</li>
+          <li><b>动效克制</b>：已内置 prefers-reduced-motion 降级。</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 设计令牌 ══════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Design Tokens / 工程令牌</div>
+      <h2>可直接取用的 CSS 变量</h2>
+      <p class="sec-desc">复制即可用于项目，命名沿用传统色拼音，语义层另做映射，便于后期换肤。</p>
+    </div>
+
+    <div class="code">
+<pre><span class="c">/* 雨过天青 · 月白风清 —— 清新通透文创色谱 */</span>
+<span class="k">:root</span> {
+  <span class="c">/* 60% 底衬 */</span>
+  <span class="k">--yuebai</span>:      <span class="v">#eef7f2</span>;  <span class="c">/* 月白   CMYK 11,0,8,0 */</span>
+  <span class="k">--xuebai</span>:      <span class="v">#fffef9</span>;  <span class="c">/* 雪白   CMYK 0,1,3,0 */</span>
+  <span class="k">--nenjulv</span>:     <span class="v">#f0f5e5</span>;  <span class="c">/* 嫩菊绿 CMYK 9,1,14,0 */</span>
+  <span class="k">--aibeilv</span>:     <span class="v">#dfecd5</span>;  <span class="c">/* 艾背绿 CMYK 20,1,23,0 */</span>
+
+  <span class="c">/* 30% 主体 */</span>
+  <span class="k">--jiqing</span>:      <span class="v">#63bbd0</span>;  <span class="c">/* 霁青   CMYK 74,2,24,0 */</span>
+  <span class="k">--pubulan</span>:     <span class="v">#51c4d3</span>;  <span class="c">/* 瀑布蓝 CMYK 79,0,27,0 */</span>
+
+  <span class="c">/* 辅助 */</span>
+  <span class="k">--conglv</span>:      <span class="v">#40a070</span>;  <span class="c">/* 葱绿   CMYK 90,7,73,0 */</span>
+  <span class="k">--heyelv</span>:      <span class="v">#1a6840</span>;  <span class="c">/* 荷叶绿 CMYK 100,31,91,25 */</span>
+  <span class="k">--pingguolv</span>:   <span class="v">#bacf65</span>;  <span class="c">/* 苹果绿 CMYK 41,4,76,0 */</span>
+
+  <span class="c">/* 10% 点睛 */</span>
+  <span class="k">--qiukuihuang</span>: <span class="v">#eed045</span>;  <span class="c">/* 秋葵黄 CMYK 8,19,84,1 */</span>
+
+  <span class="c">/* 文字 */</span>
+  <span class="k">--qinghui</span>:     <span class="v">#2b333e</span>;  <span class="c">/* 青灰   CMYK 87,69,51,58 */</span>
+  <span class="k">--tianluolv</span>:   <span class="v">#5e665b</span>;  <span class="c">/* 田螺绿 CMYK 62,42,56,34 */</span>
+
+  <span class="c">/* ── 语义映射 ── */</span>
+  <span class="k">--bg</span>:          <span class="s">var(--yuebai)</span>;
+  <span class="k">--surface</span>:     <span class="s">var(--xuebai)</span>;
+  <span class="k">--surface-alt</span>: <span class="s">var(--nenjulv)</span>;
+  <span class="k">--border</span>:      <span class="s">var(--aibeilv)</span>;
+  <span class="k">--primary</span>:     <span class="s">var(--jiqing)</span>;      <span class="c">/* 配字必须用 --qinghui */</span>
+  <span class="k">--action</span>:      <span class="s">var(--heyelv)</span>;      <span class="c">/* 实心按钮，配 --xuebai 白字 */</span>
+  <span class="k">--secondary</span>:   <span class="s">var(--conglv)</span>;
+  <span class="k">--accent</span>:      <span class="s">var(--qiukuihuang)</span>;
+  <span class="k">--text</span>:        <span class="s">var(--qinghui)</span>;
+  <span class="k">--text-muted</span>:  <span class="s">var(--tianluolv)</span>;
+}</pre>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fp">雨过天青云破处 · 月白风清水连天</div>
+    <div class="fm">
+      DOUDOU-COLOR SKILL · 526 种中国传统色权威数据库<br>
+      全部色值取自 colors.json，对比度按 WCAG 2.1 相对亮度公式实算
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,789 @@
+<title>天水澄光色谱</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* ============ 令牌层：浅色为基准，深色仅重定义变量 ============ */
+:root {
+  --c-bg:        #f7f4ed;  /* 鱼肚白 */
+  --c-surface:   #ffffff;  /* 纯素白 */
+  --c-surface-2: #d8e3e7;  /* 云峰白 */
+  --c-side:      #f1f5f7;  /* 云峰白淡化：侧栏底 */
+  --c-divider:   #e4dfd7;  /* 珍珠灰 */
+  --c-line:      #5e665b;  /* 田螺绿 5.42:1 可作控件描边 */
+  --c-primary:   #1677b3;  /* 天蓝 */
+  --c-on-primary:#ffffff;
+  --c-soft:      #8abcd1;  /* 秋波蓝 */
+  --c-accent:    #c02c38;  /* 高粱红 */
+  --c-on-accent: #ffffff;
+  --c-gold:      #ad9e5f;  /* 淡灰绿 */
+  --c-text:      #1c2938;  /* 鸽蓝 */
+  --c-muted:     #5e665b;  /* 田螺绿 */
+  --c-code-bg:   #1c2938;
+  --c-code-text: #d8e3e7;
+  --shadow: 0 1px 2px rgba(28,41,56,.06), 0 8px 24px -12px rgba(28,41,56,.18);
+  --f-display: "Noto Serif SC", Songti SC, SimSun, Georgia, serif;
+  --f-body: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c-bg:        #131824;  /* 燕颔蓝 */
+    --c-surface:   #1c2938;  /* 鸽蓝 */
+    --c-surface-2: #2b333e;  /* 青灰 */
+    --c-side:      #18222f;  /* 鸽蓝压深：侧栏底 */
+    --c-divider:   #2b333e;
+    --c-line:      #b2bbbe;  /* 星灰 */
+    --c-primary:   #93d5dc;  /* 清水蓝 */
+    --c-on-primary:#131824;  /* 深色模式按钮改用深字 10.77:1 */
+    --c-soft:      #8abcd1;
+    --c-accent:    #c02c38;
+    --c-on-accent: #ffffff;
+    --c-gold:      #fcc307;  /* 金盏黄 */
+    --c-text:      #fffef8;  /* 象牙白 */
+    --c-muted:     #b2bbbe;  /* 星灰 */
+    --c-code-bg:   #0d1119;
+    --c-code-text: #b2bbbe;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"] {
+  --c-bg:        #131824;
+  --c-surface:   #1c2938;
+  --c-surface-2: #2b333e;
+  --c-side:      #18222f;
+  --c-divider:   #2b333e;
+  --c-line:      #b2bbbe;
+  --c-primary:   #93d5dc;
+  --c-on-primary:#131824;
+  --c-soft:      #8abcd1;
+  --c-accent:    #c02c38;
+  --c-on-accent: #ffffff;
+  --c-gold:      #fcc307;
+  --c-text:      #fffef8;
+  --c-muted:     #b2bbbe;
+  --c-code-bg:   #0d1119;
+  --c-code-text: #b2bbbe;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+/* ============ 基础排版 ============ */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--f-body);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+code, .mono, td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+a { color: var(--c-primary); }
+:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+.eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--c-muted);
+  font-family: var(--f-mono);
+}
+
+/* ============ 顶栏 ============ */
+.masthead {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 18px 0 16px;
+  border-bottom: 1px solid var(--c-divider);
+}
+.masthead .brand {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+}
+.masthead h1 { font-size: 22px; font-weight: 700; letter-spacing: .04em; }
+.masthead .origin {
+  font-family: var(--f-mono); font-size: 12px; color: var(--c-muted);
+}
+.origin .chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 2px 8px; border: 1px solid var(--c-divider);
+  background: var(--c-surface);
+}
+.origin .sw { width: 10px; height: 10px; display: inline-block; }
+.theme-toggle {
+  display: flex; border: 1px solid var(--c-divider); background: var(--c-surface);
+}
+.theme-toggle button {
+  appearance: none; border: 0; background: transparent;
+  color: var(--c-muted); font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: .08em; padding: 7px 12px; cursor: pointer;
+}
+.theme-toggle button[aria-pressed="true"] {
+  background: var(--c-primary); color: var(--c-on-primary);
+}
+
+/* ============ 60-30-10 比例色带 ============ */
+.ratio {
+  display: grid;
+  grid-template-columns: 6fr 3fr 1fr;
+  height: 88px;
+  margin: 28px 0 8px;
+}
+.ratio > div { position: relative; display: flex; align-items: flex-end; padding: 10px 14px; }
+.ratio .name {
+  font-family: var(--f-display); font-weight: 700; font-size: 16px; line-height: 1.2;
+}
+.ratio .pct {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; margin-left: 8px;
+}
+/* 色带是色样本身：前后景成对写死，两种主题下都显示真实色相 */
+.ratio-bg  { background: #f7f4ed; color: #1c2938; }
+.ratio-pri { background: #1677b3; color: #ffffff; }
+.ratio-acc { background: #c02c38; color: #ffffff; }
+.lede {
+  font-family: var(--f-display); font-weight: 500; font-size: 18px;
+  line-height: 1.7; max-width: 42em; margin: 18px 0 0;
+  color: var(--c-text);
+}
+
+/* ============ 章节 ============ */
+section { padding: 56px 0 8px; }
+section h2 {
+  font-size: 26px; font-weight: 700; margin: 8px 0 28px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--c-divider);
+}
+
+/* ============ 色卡（印刷色片，直角硬边） ============ */
+.chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 18px;
+}
+.chip-card { min-width: 0; }
+.chip-swatch {
+  height: 92px; width: 100%;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 10px 12px;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em;
+}
+.chip-meta { padding: 10px 2px 0; display: grid; gap: 2px; }
+.chip-meta .cname {
+  font-family: var(--f-display); font-size: 18px; font-weight: 700;
+}
+.chip-meta .py { color: var(--c-muted); font-size: 12px; }
+.chip-meta .hex {
+  font-family: var(--f-mono); font-size: 13px; font-weight: 500;
+  background: none; border: 0; padding: 0; color: var(--c-text);
+  cursor: pointer; text-align: left; letter-spacing: .02em;
+}
+.chip-meta .hex:hover { color: var(--c-primary); }
+.chip-meta .spec {
+  font-family: var(--f-mono); font-size: 11px; color: var(--c-muted);
+  line-height: 1.55;
+}
+.role {
+  font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--c-muted); font-family: var(--f-mono); margin-bottom: 6px;
+}
+
+/* ============ 界面实例：真实产品壳 ============ */
+.app-frame {
+  background: var(--c-surface);
+  border: 1px solid var(--c-divider);
+  box-shadow: var(--shadow);
+}
+.app-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--c-primary); color: var(--c-on-primary);
+}
+.app-bar .logo {
+  font-family: var(--f-display); font-weight: 700; font-size: 16px; letter-spacing: .08em;
+}
+.app-bar nav { display: flex; gap: 4px; }
+.app-bar nav a {
+  color: var(--c-on-primary); text-decoration: none;
+  font-size: 13px; padding: 6px 10px; opacity: .78;
+}
+.app-bar nav a.current { opacity: 1; background: rgba(255,255,255,.14); }
+.app-body { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; }
+.app-main { padding: 28px 28px 32px; border-right: 1px solid var(--c-divider); }
+.app-side { padding: 28px 24px 32px; background: var(--c-side); }
+.app-kicker { font-family: var(--f-mono); font-size: 11px; letter-spacing: .18em; color: var(--c-muted); text-transform: uppercase; }
+.app-main h3 { font-size: 28px; font-weight: 700; margin: 6px 0 8px; line-height: 1.25; }
+.app-main p { margin: 0 0 18px; color: var(--c-muted); max-width: 40em; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 22px; }
+.btn {
+  appearance: none; border: 0; cursor: pointer;
+  font-family: var(--f-body); font-size: 13px; font-weight: 500;
+  padding: 9px 16px; letter-spacing: .04em;
+}
+.btn-pri { background: var(--c-primary); color: var(--c-on-primary); }
+.btn-acc { background: var(--c-accent); color: var(--c-on-accent); }
+.btn-ghost { background: transparent; color: var(--c-text); border: 1px solid var(--c-line); }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 8px 0 20px; }
+.stat .n { font-family: var(--f-display); font-size: 26px; font-weight: 700; line-height: 1.1; }
+.stat .l { font-size: 12px; color: var(--c-muted); }
+.chart { width: 100%; height: 120px; display: block; }
+.lot-list { display: grid; gap: 10px; }
+.lot {
+  display: grid; grid-template-columns: 48px 1fr auto; gap: 12px; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--c-divider);
+}
+.lot:last-child { border-bottom: 0; }
+.lot .thumb { width: 48px; height: 48px; }
+.lot .t { font-weight: 500; font-size: 13px; line-height: 1.35; }
+.lot .s { font-size: 12px; color: var(--c-muted); }
+.lot .price { font-family: var(--f-mono); font-size: 13px; font-weight: 500; }
+.badge {
+  display: inline-block; font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: .08em; padding: 2px 6px; background: var(--c-accent); color: var(--c-on-accent);
+}
+
+/* ============ 对比度表 ============ */
+.table-wrap { overflow-x: auto; }
+table.audit {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+}
+table.audit th {
+  text-align: left; font-weight: 500; font-size: 11px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--c-muted); font-family: var(--f-mono);
+  padding: 8px 10px; border-bottom: 1px solid var(--c-divider);
+}
+table.audit td {
+  padding: 10px; border-bottom: 1px solid var(--c-divider); vertical-align: middle;
+}
+table.audit td.num { font-size: 13px; }
+.pair { display: flex; align-items: center; gap: 8px; }
+.pair .a, .pair .b { width: 18px; height: 18px; flex: none; }
+.verdict { font-family: var(--f-mono); font-size: 11px; letter-spacing: .04em; padding: 2px 7px; }
+.v-aaa { background: var(--c-primary); color: var(--c-on-primary); }
+.v-aa  { background: var(--c-soft); color: #1c2938; }
+.v-fail{ background: var(--c-accent); color: #fff; }
+
+/* ============ 印刷 / 令牌 ============ */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.two-col h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.two-col p, .two-col li { color: var(--c-text); }
+.two-col ul { margin: 0; padding-left: 1.15em; display: grid; gap: 8px; }
+pre.tokens {
+  background: var(--c-code-bg); color: var(--c-code-text);
+  padding: 20px 22px; overflow-x: auto; font-size: 12.5px; line-height: 1.65;
+  margin: 0;
+}
+pre.tokens .cmt { opacity: .55; }
+pre.tokens .key { color: var(--c-soft); }
+pre.tokens .val { color: #ffffff; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) pre.tokens .val { color: #fffef8; }
+}
+:root[data-theme="dark"] pre.tokens .val { color: #fffef8; }
+
+footer {
+  margin-top: 56px; padding: 22px 0 48px;
+  border-top: 1px solid var(--c-divider);
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  font-size: 12px; color: var(--c-muted); font-family: var(--f-mono);
+}
+.copy-toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--c-primary); color: var(--c-on-primary);
+  font-family: var(--f-mono); font-size: 12px; padding: 8px 14px;
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.copy-toast.show { opacity: 1; }
+
+@media (max-width: 860px) {
+  .wrap { padding: 0 18px; }
+  .chips { grid-template-columns: 1fr 1fr; }
+  .app-body, .two-col { grid-template-columns: 1fr; }
+  .app-main { border-right: 0; border-bottom: 1px solid var(--c-divider); }
+  .ratio { height: 72px; }
+  .stat-row { grid-template-columns: 1fr 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .chips { grid-template-columns: 1fr; }
+  .ratio { grid-template-columns: 1fr; height: auto; }
+  .ratio > div { min-height: 56px; }
+  .masthead { flex-direction: column; align-items: flex-start; }
+}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="brand">
+      <h1>天水澄光 · 一点朱砂</h1>
+      <span class="origin">
+        源色
+        <span class="chip"><span class="sw" style="background:#1976D2"></span>#1976D2</span>
+        →
+        <span class="chip"><span class="sw" style="background:#1677b3"></span>天蓝 #1677b3</span>
+        ΔE 0.76
+      </span>
+    </div>
+    <div class="theme-toggle" role="group" aria-label="主题切换">
+      <button type="button" data-set="light" aria-pressed="false">浅色</button>
+      <button type="button" data-set="dark" aria-pressed="false">深色</button>
+      <button type="button" data-set="system" aria-pressed="true">跟随系统</button>
+    </div>
+  </header>
+
+  <div class="ratio" aria-label="60-30-10 面积比例示意">
+    <div class="ratio-bg"><span class="name">鱼肚白</span><span class="pct">60% 底衬</span></div>
+    <div class="ratio-pri"><span class="name">天蓝</span><span class="pct">30% 主体</span></div>
+    <div class="ratio-acc"><span class="name">高粱红</span><span class="pct">10%</span></div>
+  </div>
+  <p class="eyebrow">色带宽度即真实用色面积</p>
+
+  <p class="lede">
+    天蓝是《营造法式》青绿彩画里的“天”色，也是宋人所谓“雨过天青云破处”的那一线澄澈。
+    全案以水行的蓝白为骨，取水天一色的开阔留白；再以小面积高粱红作火行反冲，
+    像素纸上盖下的一枚朱印——水火相激，画面才不至于寒得发闷。
+  </p>
+
+  <section id="matrix">
+    <p class="eyebrow">色彩矩阵</p>
+    <h2>九色定谱</h2>
+    <div class="chips">
+
+      <div class="chip-card">
+        <div class="role">底衬基底 60%</div>
+        <div class="chip-swatch" style="background:#f7f4ed;color:#1c2938">
+          <span>土 · 包容</span><span>60%</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">鱼肚白</span>
+          <span class="py">yudubai</span>
+          <button class="hex" type="button" data-hex="#f7f4ed">#f7f4ed</button>
+          <span class="spec">RGB 247 244 237<br>CMYK 4 4 8 0</span>
+        </div>
+      </div>
+
+      <div class="chip-card">
+        <div class="role">结构主体 30%</div>
+        <div class="chip-swatch" style="background:#1677b3;color:#ffffff">
+          <span>水 · 深沉</span><span>30%</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">天蓝</span>
+          <span class="py">tianlan</span>
+          <button class="hex" type="button" data-hex="#1677b3">#1677b3</button>
+          <span class="spec">RGB 22 119 179<br>CMYK 98 43 14 2</span>
+        </div>
+      </div>
+
+      <div class="chip-card">
+        <div class="role">点睛高光 10%</div>
+        <div class="chip-swatch" style="background:#c02c38;color:#ffffff">
+          <span>火 · 热烈</span><span>10%</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">高粱红</span>
+          <span class="py">gaolianghong</span>
+          <button class="hex" type="button" data-hex="#c02c38">#c02c38</button>
+          <span class="spec">RGB 192 44 56<br>CMYK 11 93 77 2</span>
+        </div>
+      </div>
+
+      <div class="chip-card">
+        <div class="role">正文字重</div>
+        <div class="chip-swatch" style="background:#1c2938;color:#d8e3e7">
+          <span>水 · 墨骨</span><span>13.43:1</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">鸽蓝</span>
+          <span class="py">gelan</span>
+          <button class="hex" type="button" data-hex="#1c2938">#1c2938</button>
+          <span class="spec">RGB 28 41 56<br>CMYK 100 77 50 62</span>
+        </div>
+      </div>
+
+      <div class="chip-card">
+        <div class="role">辅助次色</div>
+        <div class="chip-swatch" style="background:#8abcd1;color:#1c2938">
+          <span>水 · 澄澈</span><span>装饰</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">秋波蓝</span>
+          <span class="py">qiubolan</span>
+          <button class="hex" type="button" data-hex="#8abcd1">#8abcd1</button>
+          <span class="spec">RGB 138 188 209<br>CMYK 59 12 19 0</span>
+        </div>
+      </div>
+
+      <div class="chip-card">
+        <div class="role">冷调表面</div>
+        <div class="chip-swatch" style="background:#d8e3e7;color:#1c2938">
+          <span>水 · 轻盈</span><span>Surface</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">云峰白</span>
+          <span class="py">yunfengbai</span>
+          <button class="hex" type="button" data-hex="#d8e3e7">#d8e3e7</button>
+          <span class="spec">RGB 216 227 231<br>CMYK 21 6 10 0</span>
+        </div>
+      </div>
+
+      <div class="chip-card">
+        <div class="role">描边分割</div>
+        <div class="chip-swatch" style="background:#e4dfd7;color:#1c2938">
+          <span>土 · 素净</span><span>Border</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">珍珠灰</span>
+          <span class="py">zhenzhuhui</span>
+          <button class="hex" type="button" data-hex="#e4dfd7">#e4dfd7</button>
+          <span class="spec">RGB 228 223 215<br>CMYK 12 12 16 0</span>
+        </div>
+      </div>
+
+      <div class="chip-card">
+        <div class="role">暖调备选点睛</div>
+        <div class="chip-swatch" style="background:#b7511d;color:#ffffff">
+          <span>火 · 醇厚</span><span>互补</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">淡可可棕</span>
+          <span class="py">dankekezong</span>
+          <button class="hex" type="button" data-hex="#b7511d">#b7511d</button>
+          <span class="spec">RGB 183 81 29<br>CMYK 16 77 100 6</span>
+        </div>
+      </div>
+
+      <div class="chip-card">
+        <div class="role">金饰工艺色</div>
+        <div class="chip-swatch" style="background:#ad9e5f;color:#1c2938">
+          <span>土 · 古金</span><span>烫金</span>
+        </div>
+        <div class="chip-meta">
+          <span class="cname">淡灰绿</span>
+          <span class="py">danhuilv</span>
+          <button class="hex" type="button" data-hex="#ad9e5f">#ad9e5f</button>
+          <span class="spec">RGB 173 158 85<br>CMYK 30 30 70 12</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="specimen">
+    <p class="eyebrow">界面实例</p>
+    <h2>落地样张：青瓷征集后台</h2>
+    <div class="app-frame">
+      <div class="app-bar">
+        <span class="logo">澄光 · 器物征集</span>
+        <nav>
+          <a href="#specimen" class="current">本期征集</a>
+          <a href="#specimen">窑口图谱</a>
+          <a href="#specimen">成交记录</a>
+        </nav>
+      </div>
+      <div class="app-body">
+        <div class="app-main">
+          <p class="app-kicker">秋季专场 · 第 14 期</p>
+          <h3>雨过天青，一线釉光</h3>
+          <p>
+            本期收录汝、龙泉、耀州三窑青釉器四十一件，
+            均经窑址胎釉比对与开片形态复核。截标前七日可预约上手。
+          </p>
+          <div class="btn-row">
+            <button class="btn btn-acc" type="button">提交竞投</button>
+            <button class="btn btn-pri" type="button">预约上手</button>
+            <button class="btn btn-ghost" type="button">下载图录</button>
+          </div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="n mono">41</div>
+              <div class="l">在册器物</div>
+            </div>
+            <div class="stat">
+              <div class="n mono">153.7</div>
+              <div class="l">累计竞投额 / 万元</div>
+            </div>
+            <div class="stat">
+              <div class="n mono">6</div>
+              <div class="l">距截标 / 日</div>
+            </div>
+          </div>
+          <p class="app-kicker" style="margin-bottom:6px">近七日竞投额 / 万元</p>
+          <svg class="chart" viewBox="0 0 420 124" role="img"
+               aria-label="近七日竞投额柱状图，周六 31.8 万元为峰值">
+            <g style="stroke:var(--c-divider)" stroke-width="1">
+              <line x1="34" y1="94" x2="414" y2="94"></line>
+              <line x1="34" y1="52" x2="414" y2="52" stroke-dasharray="2 4"></line>
+              <line x1="34" y1="10" x2="414" y2="10" stroke-dasharray="2 4"></line>
+            </g>
+            <g style="fill:var(--c-muted)" font-size="9" font-family="JetBrains Mono, monospace"
+               text-anchor="end" dominant-baseline="middle">
+              <text x="28" y="94">0</text>
+              <text x="28" y="52">16</text>
+              <text x="28" y="10">32</text>
+            </g>
+            <g style="fill:var(--c-soft)">
+              <rect x="44"  y="61" width="34" height="33"></rect>
+              <rect x="98"  y="44" width="34" height="50"></rect>
+              <rect x="153" y="54" width="34" height="40"></rect>
+              <rect x="207" y="29" width="34" height="65"></rect>
+              <rect x="261" y="38" width="34" height="56"></rect>
+              <rect x="370" y="19" width="34" height="75"></rect>
+            </g>
+            <rect x="316" y="10" width="34" height="84" style="fill:var(--c-accent)"></rect>
+            <g style="fill:var(--c-muted)" font-size="9" font-family="Noto Sans SC, sans-serif"
+               text-anchor="middle">
+              <text x="61"  y="112">周一</text>
+              <text x="115" y="112">周二</text>
+              <text x="170" y="112">周三</text>
+              <text x="224" y="112">周四</text>
+              <text x="278" y="112">周五</text>
+              <text x="333" y="112">周六</text>
+              <text x="387" y="112">周日</text>
+            </g>
+            <text x="333" y="7" style="fill:var(--c-accent)" font-size="9"
+                  font-family="JetBrains Mono, monospace" text-anchor="middle">31.8</text>
+          </svg>
+        </div>
+
+        <div class="app-side">
+          <p class="app-kicker" style="margin-bottom:14px">关注中的器物</p>
+          <div class="lot-list">
+            <div class="lot">
+              <div class="thumb" style="background:#8abcd1"></div>
+              <div>
+                <div class="t">汝窑天青釉葵口盏</div>
+                <div class="s">北宋 · 口径 10.2cm · 蝉翼纹开片</div>
+              </div>
+              <div class="price">28.5</div>
+            </div>
+            <div class="lot">
+              <div class="thumb" style="background:#1677b3"></div>
+              <div>
+                <div class="t">龙泉窑梅子青釉鬲式炉 <span class="badge">领先</span></div>
+                <div class="s">南宋 · 高 9.6cm · 三足微修</div>
+              </div>
+              <div class="price">31.8</div>
+            </div>
+            <div class="lot">
+              <div class="thumb" style="background:#ad9e5f"></div>
+              <div>
+                <div class="t">耀州窑青釉刻花牡丹纹碗</div>
+                <div class="s">北宋 · 口径 19.4cm · 足沿磕</div>
+              </div>
+              <div class="price">12.4</div>
+            </div>
+            <div class="lot">
+              <div class="thumb" style="background:#d8e3e7"></div>
+              <div>
+                <div class="t">南宋官窑米黄釉纸槌瓶</div>
+                <div class="s">南宋 · 高 21.8cm · 金丝铁线</div>
+              </div>
+              <div class="price">24.6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="eyebrow" style="margin-top:14px">
+      示例数据 · 顶栏用天蓝承担 30% 主体，竞投按钮为唯一高粱红点睛，柱状图峰值复用同一强调色
+    </p>
+  </section>
+
+  <section id="audit">
+    <p class="eyebrow">无障碍核验 · WCAG 2.1</p>
+    <h2>对比度实测</h2>
+    <div class="table-wrap">
+      <table class="audit">
+        <thead>
+          <tr>
+            <th>配对</th>
+            <th>前景 / 背景</th>
+            <th>比值</th>
+            <th>判定</th>
+            <th>适用范围</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#1c2938"></span><span class="b" style="background:#f7f4ed"></span></span></td>
+            <td>鸽蓝 / 鱼肚白</td>
+            <td class="num">13.43:1</td>
+            <td><span class="verdict v-aaa">AAA</span></td>
+            <td>正文、标题，任意字号</td>
+          </tr>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#c02c38"></span><span class="b" style="background:#f7f4ed"></span></span></td>
+            <td>高粱红 / 鱼肚白</td>
+            <td class="num">5.23:1</td>
+            <td><span class="verdict v-aa">AA</span></td>
+            <td>强调文字、警示标签</td>
+          </tr>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#ffffff"></span><span class="b" style="background:#c02c38"></span></span></td>
+            <td>纯白 / 高粱红</td>
+            <td class="num">5.74:1</td>
+            <td><span class="verdict v-aa">AA</span></td>
+            <td>CTA 实底按钮</td>
+          </tr>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#5e665b"></span><span class="b" style="background:#f7f4ed"></span></span></td>
+            <td>田螺绿 / 鱼肚白</td>
+            <td class="num">5.42:1</td>
+            <td><span class="verdict v-aa">AA</span></td>
+            <td>次级说明文字、控件描边</td>
+          </tr>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#ffffff"></span><span class="b" style="background:#1677b3"></span></span></td>
+            <td>纯白 / 天蓝</td>
+            <td class="num">4.86:1</td>
+            <td><span class="verdict v-aa">AA</span></td>
+            <td>天蓝实底按钮压白字</td>
+          </tr>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#1677b3"></span><span class="b" style="background:#f7f4ed"></span></span></td>
+            <td>天蓝 / 鱼肚白</td>
+            <td class="num">4.42:1</td>
+            <td><span class="verdict v-fail">未达正文</span></td>
+            <td>仅限 ≥24px 或 ≥18.7px 加粗；小字正文须改鸽蓝</td>
+          </tr>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#8abcd1"></span><span class="b" style="background:#f7f4ed"></span></span></td>
+            <td>秋波蓝 / 鱼肚白</td>
+            <td class="num">1.88:1</td>
+            <td><span class="verdict v-fail">装饰限定</span></td>
+            <td>图表色块、纹样；不可承载文字</td>
+          </tr>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#8abcd1"></span><span class="b" style="background:#1c2938"></span></span></td>
+            <td>秋波蓝 / 鸽蓝</td>
+            <td class="num">7.16:1</td>
+            <td><span class="verdict v-aaa">AAA</span></td>
+            <td>深色模式正文可用</td>
+          </tr>
+          <tr>
+            <td><span class="pair"><span class="a" style="background:#e4dfd7"></span><span class="b" style="background:#f7f4ed"></span></span></td>
+            <td>珍珠灰 / 鱼肚白</td>
+            <td class="num">1.21:1</td>
+            <td><span class="verdict v-fail">装饰限定</span></td>
+            <td>仅作分割线；输入框描边须改田螺绿以满足 3:1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="eyebrow" style="margin-top:14px">
+      比值按 WCAG 相对亮度公式计算 · 正文门槛 4.5:1 · 大字与图形组件门槛 3:1
+    </p>
+  </section>
+
+  <section id="craft">
+    <p class="eyebrow">工艺落地</p>
+    <h2>印刷与后道</h2>
+    <div class="two-col">
+      <div>
+        <h3>四色胶印</h3>
+        <ul>
+          <li>天蓝 C98 已近青版满色，大面积平网易出条痕与色偏。建议改专色（Pantone 3005C 一带），或至少提高网点线数至 200lpi。</li>
+          <li>高粱红 M93 Y77 双版高叠加，小面积印章式使用最稳；若用于大块底色需加做叠印补偿。</li>
+          <li>鸽蓝总墨量 289%，超出胶印 320% 上限不多但已偏高，深色大版建议改为 K85 加青底。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>纸张与后道</h3>
+        <ul>
+          <li>鱼肚白含 8% 黄，配本白宣纸、哑光道林或大地纸最贴合。切忌高白铜版——冷白纸会把这点暖意抵消，整体转寡淡。</li>
+          <li>淡灰绿位置烫哑金，天蓝区块局部击凸，高粱红处压一枚小面积印章式局部 UV。</li>
+          <li>整体覆哑膜，保留纸张手感；亮膜会让天蓝浮起来，与青瓷的内敛质地相悖。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="tokens">
+    <p class="eyebrow">工程交付</p>
+    <h2>设计令牌</h2>
+    <pre class="tokens"><code>:root {
+  <span class="cmt">/* 60% 基底 */</span>
+  <span class="key">--color-bg</span>:           <span class="val">#f7f4ed</span>;  <span class="cmt">/* 鱼肚白 */</span>
+  <span class="key">--color-surface</span>:      <span class="val">#ffffff</span>;  <span class="cmt">/* 纯素白 */</span>
+  <span class="key">--color-surface-alt</span>:  <span class="val">#d8e3e7</span>;  <span class="cmt">/* 云峰白 */</span>
+  <span class="key">--color-border</span>:       <span class="val">#e4dfd7</span>;  <span class="cmt">/* 珍珠灰 · 仅分割线 */</span>
+  <span class="key">--color-border-strong</span>:<span class="val">#5e665b</span>;  <span class="cmt">/* 田螺绿 · 控件描边 3:1 达标 */</span>
+
+  <span class="cmt">/* 30% 主体 */</span>
+  <span class="key">--color-primary</span>:      <span class="val">#1677b3</span>;  <span class="cmt">/* 天蓝 · 实底/大字，勿作小字正文 */</span>
+  <span class="key">--color-primary-soft</span>: <span class="val">#8abcd1</span>;  <span class="cmt">/* 秋波蓝 · 装饰与图表 */</span>
+
+  <span class="cmt">/* 10% 点睛 */</span>
+  <span class="key">--color-accent</span>:       <span class="val">#c02c38</span>;  <span class="cmt">/* 高粱红 */</span>
+  <span class="key">--color-accent-warm</span>:  <span class="val">#b7511d</span>;  <span class="cmt">/* 淡可可棕 · 印刷更佳 */</span>
+  <span class="key">--color-gold</span>:         <span class="val">#ad9e5f</span>;  <span class="cmt">/* 淡灰绿 · 烫金/勋章 */</span>
+
+  <span class="cmt">/* 文本 */</span>
+  <span class="key">--color-text</span>:         <span class="val">#1c2938</span>;  <span class="cmt">/* 鸽蓝 13.43:1 */</span>
+  <span class="key">--color-text-muted</span>:   <span class="val">#5e665b</span>;  <span class="cmt">/* 田螺绿 5.42:1 */</span>
+  <span class="key">--color-on-primary</span>:   <span class="val">#ffffff</span>;  <span class="cmt">/* 4.86:1 */</span>
+}
+
+<span class="cmt">/* 暗夜幽玄：以燕颔蓝为幕，主色提亮、按钮转深字 */</span>
+[data-theme="dark"] {
+  <span class="key">--color-bg</span>:           <span class="val">#131824</span>;  <span class="cmt">/* 燕颔蓝 */</span>
+  <span class="key">--color-surface</span>:      <span class="val">#1c2938</span>;  <span class="cmt">/* 鸽蓝 */</span>
+  <span class="key">--color-border</span>:       <span class="val">#2b333e</span>;  <span class="cmt">/* 青灰 */</span>
+  <span class="key">--color-primary</span>:      <span class="val">#93d5dc</span>;  <span class="cmt">/* 清水蓝 */</span>
+  <span class="key">--color-on-primary</span>:   <span class="val">#131824</span>;  <span class="cmt">/* 10.77:1 深字压亮底 */</span>
+  <span class="key">--color-accent</span>:       <span class="val">#c02c38</span>;  <span class="cmt">/* 高粱红 · 仅作实底 */</span>
+  <span class="key">--color-accent-text</span>:  <span class="val">#fcc307</span>;  <span class="cmt">/* 金盏黄 10.90:1 · 强调文字改用 */</span>
+  <span class="key">--color-text</span>:         <span class="val">#fffef8</span>;  <span class="cmt">/* 象牙白 */</span>
+  <span class="key">--color-text-muted</span>:   <span class="val">#b2bbbe</span>;  <span class="cmt">/* 星灰 */</span>
+}</code></pre>
+    <p class="eyebrow" style="margin-top:14px">
+      深色模式下高粱红作文字仅 3.08:1，故拆出 accent-text 走金盏黄；实底按钮仍用高粱红压白字
+    </p>
+  </section>
+
+  <footer>
+    <span>天水澄光 · 一点朱砂　九色定谱　源色 #1976D2 → 天蓝 ΔE 0.76</span>
+    <span>色值出自中国传统色谱 526 色</span>
+  </footer>
+</div>
+
+<div class="copy-toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.theme-toggle button'));
+
+  function apply(mode) {
+    if (mode === 'system') root.removeAttribute('data-theme');
+    else root.setAttribute('data-theme', mode);
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.set === mode));
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.set); });
+  });
+
+  var toast = document.querySelector('.copy-toast');
+  var timer;
+  document.querySelectorAll('.hex').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var hex = btn.dataset.hex;
+      var done = function () {
+        toast.textContent = '已复制 ' + hex;
+        toast.classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(function () { toast.classList.remove('show'); }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(hex).then(done, done);
+      } else {
+        done();
+      }
+    });
+  });
+})();
+</script>
+
