@@ -53,6 +53,7 @@ npx skills add undsky/doudou-color-skill --yes
 > _“我喜欢这个蓝色 #1976D2，再帮我搭几个好看的颜色。”_
 
 ![demo2](./demo/demo2.png)
+
 [查看DEMO](https://htmlpreview.github.io/?https://github.com/undsky/doudou-color-skill/blob/master/demo/demo2.html)
 
 #### 场景 3：清新自然 / 明快轻盈治愈
@@ -60,6 +61,7 @@ npx skills add undsky/doudou-color-skill --yes
 > _“我想做一款清新明快、轻盈治愈的文创包装，想要那种通透又有呼吸感的效果，帮我搭配一组明朗干净的中国传统色！”_
 
 ![demo3](./demo/demo3.png)
+
 [查看DEMO](https://htmlpreview.github.io/?https://github.com/undsky/doudou-color-skill/blob/master/demo/demo3.html)
 
 ---
