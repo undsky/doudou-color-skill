@@ -1,6 +1,10 @@
 # 中国传统色配色技能 (doudou-color)
 
 <p align="center">
+  <b>简体中文</b> | <a href="README_EN.md">English</a>
+</p>
+
+<p align="center">
   <img src="./assets/banner.png" alt="中国传统色配色技能 Banner" width="100%" />
 </p>
 
